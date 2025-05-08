@@ -12,6 +12,7 @@ Within each level, crates will be categorized by functionality type (core, netwo
 
 - `gix-archive`: Repository archiving functionality
 - `gix-attributes`: Git attributes handling
+- `gix-bitmap`: Bitmap functionality for pack files
 
 ## Dependency Hierarchy
 
