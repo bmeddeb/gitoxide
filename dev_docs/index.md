@@ -23,12 +23,12 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-attributes](./gix-attributes/) | Git attributes handling |
 | [x] | [gix-bitmap](./gix-bitmap/) | Bitmap functionality for pack files |
 | [x] | [gix-blame](./gix-blame/) | Git blame implementation |
-| [ ] | [gix-chunk](./gix-chunk/) | Chunk file handling |
-| [ ] | [gix-command](./gix-command/) | Git command execution |
-| [ ] | [gix-commitgraph](./gix-commitgraph/) | Commit graph handling |
+| [x] | [gix-chunk](./gix-chunk/) | Chunk file handling |
+| [x] | [gix-command](./gix-command/) | Git command execution |
+| [x] | [gix-commitgraph](./gix-commitgraph/) | Commit graph handling |
 | [x] | [gix-config](./gix-config/) | Git configuration handling |
 | [x] | [gix-config-value](./gix-config-value/) | Git configuration value parsing |
-| [ ] | [gix-credentials](./gix-credentials/) | Credential handling |
+| [x] | [gix-credentials](./gix-credentials/) | Credential handling |
 | [x] | [gix-date](./gix-date/) | Git date parsing and formatting |
 | [x] | [gix-diff](./gix-diff/) | Git diff implementation |
 | [x] | [gix-dir](./gix-dir/) | Directory walk functionality |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 36
-- Remaining: 26
+- Documented: 40
+- Remaining: 22
