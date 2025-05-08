@@ -8,6 +8,11 @@ We'll document crates in order of their position in the dependency hierarchy, st
 
 Within each level, crates will be categorized by functionality type (core, network, filesystem, etc.).
 
+## Recently Documented
+
+- `gix-archive`: Repository archiving functionality
+- `gix-attributes`: Git attributes handling
+
 ## Dependency Hierarchy
 
 ### Level 0 (Zero Internal Dependencies)

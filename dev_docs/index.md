@@ -19,8 +19,8 @@ The following table tracks the documentation status for each crate in the worksp
 | Status | Crate | Description |
 |--------|-------|-------------|
 | [x] | [gix-actor](./gix-actor/) | Git actor (author/committer) handling |
-| [ ] | [gix-archive](./gix-archive/) | Repository archiving functionality |
-| [ ] | [gix-attributes](./gix-attributes/) | Git attributes handling |
+| [x] | [gix-archive](./gix-archive/) | Repository archiving functionality |
+| [x] | [gix-attributes](./gix-attributes/) | Git attributes handling |
 | [ ] | [gix-bitmap](./gix-bitmap/) | Bitmap functionality for pack files |
 | [ ] | [gix-blame](./gix-blame/) | Git blame implementation |
 | [ ] | [gix-chunk](./gix-chunk/) | Chunk file handling |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 32
-- Remaining: 30
+- Documented: 34
+- Remaining: 28
