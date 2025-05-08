@@ -44,9 +44,9 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-ignore](./gix-ignore/) | Git ignore handling |
 | [x] | [gix-index](./gix-index/) | Git index handling |
 | [ ] | [gix-lfs](./gix-lfs/) | Git LFS implementation |
-| [ ] | [gix-lock](./gix-lock/) | File locking functionality |
+| [x] | [gix-lock](./gix-lock/) | File locking functionality |
 | [x] | [gix-macros](./gix-macros/) | Procedural macros |
-| [ ] | [gix-mailmap](./gix-mailmap/) | Git mailmap functionality |
+| [x] | [gix-mailmap](./gix-mailmap/) | Git mailmap functionality |
 | [ ] | [gix-merge](./gix-merge/) | Git merge functionality |
 | [x] | [gix-negotiate](./gix-negotiate/) | Network protocol negotiation |
 | [ ] | [gix-note](./gix-note/) | Git notes functionality |
@@ -56,10 +56,10 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-packetline](./gix-packetline/) | Async packetline protocol implementation |
 | [x] | [gix-packetline-blocking](./gix-packetline-blocking/) | Blocking packetline protocol implementation |
 | [x] | [gix-path](./gix-path/) | Path handling utilities |
-| [ ] | [gix-pathspec](./gix-pathspec/) | Git pathspec handling |
-| [ ] | [gix-prompt](./gix-prompt/) | User prompt functionality |
+| [x] | [gix-pathspec](./gix-pathspec/) | Git pathspec handling |
+| [x] | [gix-prompt](./gix-prompt/) | User prompt functionality |
 | [x] | [gix-protocol](./gix-protocol/) | Git protocol implementation |
-| [ ] | [gix-quote](./gix-quote/) | String quoting utilities |
+| [x] | [gix-quote](./gix-quote/) | String quoting utilities |
 | [ ] | [gix-rebase](./gix-rebase/) | Git rebase functionality |
 | [x] | [gix-ref](./gix-ref/) | Git reference handling |
 | [ ] | [gix-refspec](./gix-refspec/) | Git refspec handling |
@@ -70,7 +70,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [ ] | [gix-shallow](./gix-shallow/) | Shallow repository handling |
 | [x] | [gix-status](./gix-status/) | Repository status functionality |
 | [ ] | [gix-submodule](./gix-submodule/) | Git submodule handling |
-| [ ] | [gix-tempfile](./gix-tempfile/) | Temporary file management |
+| [x] | [gix-tempfile](./gix-tempfile/) | Temporary file management |
 | [ ] | [gix-tix](./gix-tix/) | Terminal UI components |
 | [x] | [gix-trace](./gix-trace/) | Tracing and logging functionality |
 | [x] | [gix-transport](./gix-transport/) | Transport protocol implementation |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 46
-- Remaining: 16
+- Documented: 52
+- Remaining: 10
