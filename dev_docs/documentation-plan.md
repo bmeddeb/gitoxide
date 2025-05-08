@@ -85,10 +85,4 @@ These crates depend on only one gitoxide crate:
 - [x] `gitoxide-core`: Core CLI implementation
 - [ ] `gitoxide`: Main binary crate
 
-## Progress
-
-- Total crates: 62
-- Documented: 32
-- Remaining: 30
-
 This approach will create coherent documentation that follows the natural structure of the codebase, making it easier for new developers to understand how components fit together.
