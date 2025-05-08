@@ -41,7 +41,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-glob](./gix-glob/) | Glob pattern matching |
 | [x] | [gix-hash](./gix-hash/) | Git hash types and operations |
 | [x] | [gix-hashtable](./gix-hashtable/) | Hash table implementation |
-| [ ] | [gix-ignore](./gix-ignore/) | Git ignore handling |
+| [x] | [gix-ignore](./gix-ignore/) | Git ignore handling |
 | [x] | [gix-index](./gix-index/) | Git index handling |
 | [ ] | [gix-lfs](./gix-lfs/) | Git LFS implementation |
 | [ ] | [gix-lock](./gix-lock/) | File locking functionality |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 45
-- Remaining: 17
+- Documented: 46
+- Remaining: 16
