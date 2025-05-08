@@ -26,7 +26,7 @@ These crates depend on only one gitoxide crate:
 - [x] `gix-hashtable`: Hashtable optimized for ObjectId keys
 
 **Filesystem**:
-- [ ] `gix-path`: Path manipulation and conversions
+- [x] `gix-path`: Path manipulation and conversions
 
 **Security/Permissions**:
 - [ ] `gix-sec`: Security and trust model
@@ -82,8 +82,8 @@ These crates depend on only one gitoxide crate:
 ## Progress
 
 - Total crates: 62
-- Documented: 8
-- Remaining: 54
+- Documented: 9
+- Remaining: 53
 
 ## Next Steps
 

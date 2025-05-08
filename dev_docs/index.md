@@ -55,7 +55,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [ ] | [gix-pack](./gix-pack/) | Pack file handling |
 | [ ] | [gix-packetline](./gix-packetline/) | Async packetline protocol implementation |
 | [ ] | [gix-packetline-blocking](./gix-packetline-blocking/) | Blocking packetline protocol implementation |
-| [ ] | [gix-path](./gix-path/) | Path handling utilities |
+| [x] | [gix-path](./gix-path/) | Path handling utilities |
 | [ ] | [gix-pathspec](./gix-pathspec/) | Git pathspec handling |
 | [ ] | [gix-prompt](./gix-prompt/) | User prompt functionality |
 | [ ] | [gix-protocol](./gix-protocol/) | Git protocol implementation |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 8
-- Remaining: 54
+- Documented: 9
+- Remaining: 53
