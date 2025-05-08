@@ -18,7 +18,7 @@ The following table tracks the documentation status for each crate in the worksp
 
 | Status | Crate | Description |
 |--------|-------|-------------|
-| [ ] | [gix-actor](./gix-actor/) | Git actor (author/committer) handling |
+| [x] | [gix-actor](./gix-actor/) | Git actor (author/committer) handling |
 | [ ] | [gix-archive](./gix-archive/) | Repository archiving functionality |
 | [ ] | [gix-attributes](./gix-attributes/) | Git attributes handling |
 | [ ] | [gix-bitmap](./gix-bitmap/) | Bitmap functionality for pack files |
@@ -29,11 +29,11 @@ The following table tracks the documentation status for each crate in the worksp
 | [ ] | [gix-config](./gix-config/) | Git configuration handling |
 | [ ] | [gix-config-value](./gix-config-value/) | Git configuration value parsing |
 | [ ] | [gix-credentials](./gix-credentials/) | Credential handling |
-| [ ] | [gix-date](./gix-date/) | Git date parsing and formatting |
+| [x] | [gix-date](./gix-date/) | Git date parsing and formatting |
 | [ ] | [gix-diff](./gix-diff/) | Git diff implementation |
 | [ ] | [gix-dir](./gix-dir/) | Directory walk functionality |
 | [ ] | [gix-discover](./gix-discover/) | Repository discovery functionality |
-| [ ] | [gix-features](./gix-features/) | Feature flags and utilities |
+| [x] | [gix-features](./gix-features/) | Feature flags and utilities |
 | [ ] | [gix-fetchhead](./gix-fetchhead/) | FETCH_HEAD handling |
 | [ ] | [gix-filter](./gix-filter/) | Git filter functionality |
 | [ ] | [gix-fs](./gix-fs/) | Filesystem operations |
@@ -48,24 +48,24 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-macros](./gix-macros/) | Procedural macros |
 | [ ] | [gix-mailmap](./gix-mailmap/) | Git mailmap functionality |
 | [ ] | [gix-merge](./gix-merge/) | Git merge functionality |
-| [ ] | [gix-negotiate](./gix-negotiate/) | Network protocol negotiation |
+| [x] | [gix-negotiate](./gix-negotiate/) | Network protocol negotiation |
 | [ ] | [gix-note](./gix-note/) | Git notes functionality |
-| [ ] | [gix-object](./gix-object/) | Git object handling |
+| [x] | [gix-object](./gix-object/) | Git object handling |
 | [ ] | [gix-odb](./gix-odb/) | Object database functionality |
 | [ ] | [gix-pack](./gix-pack/) | Pack file handling |
-| [ ] | [gix-packetline](./gix-packetline/) | Async packetline protocol implementation |
-| [ ] | [gix-packetline-blocking](./gix-packetline-blocking/) | Blocking packetline protocol implementation |
+| [x] | [gix-packetline](./gix-packetline/) | Async packetline protocol implementation |
+| [x] | [gix-packetline-blocking](./gix-packetline-blocking/) | Blocking packetline protocol implementation |
 | [x] | [gix-path](./gix-path/) | Path handling utilities |
 | [ ] | [gix-pathspec](./gix-pathspec/) | Git pathspec handling |
 | [ ] | [gix-prompt](./gix-prompt/) | User prompt functionality |
 | [ ] | [gix-protocol](./gix-protocol/) | Git protocol implementation |
 | [ ] | [gix-quote](./gix-quote/) | String quoting utilities |
 | [ ] | [gix-rebase](./gix-rebase/) | Git rebase functionality |
-| [ ] | [gix-ref](./gix-ref/) | Git reference handling |
+| [x] | [gix-ref](./gix-ref/) | Git reference handling |
 | [ ] | [gix-refspec](./gix-refspec/) | Git refspec handling |
 | [ ] | [gix-revision](./gix-revision/) | Git revision parsing and handling |
 | [ ] | [gix-revwalk](./gix-revwalk/) | Revision walking functionality |
-| [ ] | [gix-sec](./gix-sec/) | Security-related functionality |
+| [x] | [gix-sec](./gix-sec/) | Security-related functionality |
 | [ ] | [gix-sequencer](./gix-sequencer/) | Git sequencer operations |
 | [ ] | [gix-shallow](./gix-shallow/) | Shallow repository handling |
 | [ ] | [gix-status](./gix-status/) | Repository status functionality |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 9
-- Remaining: 53
+- Documented: 18
+- Remaining: 44

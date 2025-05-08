@@ -41,18 +41,18 @@ These crates depend on only one gitoxide crate:
 ### Level 3 (Three+ Internal Dependencies)
 
 **Object Model**:
-- [ ] `gix-actor`: Git actor identification
-- [ ] `gix-object`: Git object handling
+- [x] `gix-actor`: Git actor identification
+- [x] `gix-object`: Git object handling
 
 **Protocol/Network**:
-- [ ] `gix-negotiate`: Negotiation algorithms
-- [ ] `gix-packetline`: Packetline protocol implementation
-- [ ] `gix-packetline-blocking`: Blocking version of packetline
+- [x] `gix-negotiate`: Negotiation algorithms
+- [x] `gix-packetline`: Packetline protocol implementation
+- [x] `gix-packetline-blocking`: Blocking version of packetline
 
 ### Level 4+
 
 **Git Data Model**:
-- [ ] `gix-ref`: Reference handling
+- [x] `gix-ref`: Reference handling
 - [ ] `gix-index`: Index file handling
 - [ ] `gix-config`: Config file handling
 - [ ] `gix-config-value`: Config value parsing
@@ -82,8 +82,8 @@ These crates depend on only one gitoxide crate:
 ## Progress
 
 - Total crates: 62
-- Documented: 12
-- Remaining: 50
+- Documented: 18
+- Remaining: 44
 
 ## Next Steps
 
