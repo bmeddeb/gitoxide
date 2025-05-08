@@ -30,7 +30,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-config-value](./gix-config-value/) | Git configuration value parsing |
 | [ ] | [gix-credentials](./gix-credentials/) | Credential handling |
 | [x] | [gix-date](./gix-date/) | Git date parsing and formatting |
-| [ ] | [gix-diff](./gix-diff/) | Git diff implementation |
+| [x] | [gix-diff](./gix-diff/) | Git diff implementation |
 | [ ] | [gix-dir](./gix-dir/) | Directory walk functionality |
 | [ ] | [gix-discover](./gix-discover/) | Repository discovery functionality |
 | [x] | [gix-features](./gix-features/) | Feature flags and utilities |
@@ -68,7 +68,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-sec](./gix-sec/) | Security-related functionality |
 | [ ] | [gix-sequencer](./gix-sequencer/) | Git sequencer operations |
 | [ ] | [gix-shallow](./gix-shallow/) | Shallow repository handling |
-| [ ] | [gix-status](./gix-status/) | Repository status functionality |
+| [x] | [gix-status](./gix-status/) | Repository status functionality |
 | [ ] | [gix-submodule](./gix-submodule/) | Git submodule handling |
 | [ ] | [gix-tempfile](./gix-tempfile/) | Temporary file management |
 | [ ] | [gix-tix](./gix-tix/) | Terminal UI components |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 23
-- Remaining: 39
+- Documented: 25
+- Remaining: 37

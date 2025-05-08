@@ -60,12 +60,12 @@ These crates depend on only one gitoxide crate:
 **Git Operations**:
 - [x] `gix-odb`: Object database
 - [x] `gix-pack`: Pack file handling
-- [ ] `gix-diff`: Diff implementation
-- [ ] `gix-status`: Status implementation
+- [x] `gix-diff`: Diff implementation
+- [x] `gix-status`: Status implementation
 
 **Network**:
 - [ ] `gix-transport`: Transport protocol
-- [ ] `gix-protocol`: Git protocol 
+- [ ] `gix-protocol`: Git protocol
 - [ ] `gix-url`: URL parsing and handling
 
 **Filesystem Operations**:
@@ -76,19 +76,13 @@ These crates depend on only one gitoxide crate:
 
 ### Top Level
 - [x] `gix`: Main library
-- [x] `gitoxide-core`: Core CLI implementation 
+- [x] `gitoxide-core`: Core CLI implementation
 - [ ] `gitoxide`: Main binary crate
 
 ## Progress
 
 - Total crates: 62
-- Documented: 23
-- Remaining: 39
-
-## Next Steps
-
-1. ✅ Complete documentation for Level 0 crates
-2. Proceed with documentation for Level 1 crates
-3. Continue up the dependency hierarchy
+- Documented: 25
+- Remaining: 37
 
 This approach will create coherent documentation that follows the natural structure of the codebase, making it easier for new developers to understand how components fit together.
