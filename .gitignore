@@ -93,3 +93,6 @@ var/
 .installed.cfg
 *.egg
 
+.claude/
+claude.m
+**/.claude/settings.local.json
