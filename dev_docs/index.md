@@ -31,7 +31,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [ ] | [gix-credentials](./gix-credentials/) | Credential handling |
 | [x] | [gix-date](./gix-date/) | Git date parsing and formatting |
 | [x] | [gix-diff](./gix-diff/) | Git diff implementation |
-| [ ] | [gix-dir](./gix-dir/) | Directory walk functionality |
+| [x] | [gix-dir](./gix-dir/) | Directory walk functionality |
 | [ ] | [gix-discover](./gix-discover/) | Repository discovery functionality |
 | [x] | [gix-features](./gix-features/) | Feature flags and utilities |
 | [ ] | [gix-fetchhead](./gix-fetchhead/) | FETCH_HEAD handling |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 31
-- Remaining: 31
+- Documented: 32
+- Remaining: 30
