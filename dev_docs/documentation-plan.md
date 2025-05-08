@@ -36,7 +36,7 @@ These crates depend on only one gitoxide crate:
 **Core**:
 - [x] `gix-features`: Feature flag integrations
 - [x] `gix-hash`: Git hash digest handling
-- [ ] `gix-date`: Git date parsing
+- [x] `gix-date`: Git date parsing
 
 ### Level 3 (Three+ Internal Dependencies)
 
@@ -82,8 +82,8 @@ These crates depend on only one gitoxide crate:
 ## Progress
 
 - Total crates: 62
-- Documented: 11
-- Remaining: 51
+- Documented: 12
+- Remaining: 50
 
 ## Next Steps
 

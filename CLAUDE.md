@@ -17,8 +17,8 @@ The primary task is to create comprehensive documentation for each crate in the 
    - Examples of usage
 
 4. follow the template in dev_docs/template.md to create a new documentation page
-5. add the new page to the documentation plan
-6. verify if the crate needs usage examples, use cases, or other documentation and create them if needed
+5. Create use_cases.md to generate use cases.Intended Audience, problems -> solution, with example code when applicable. Create other markdown files as needed.
+6. add the new page to the documentation plan and index
 
 
 This comprehensive documentation effort will serve as a guide for development and help in understanding the entire codebase.
@@ -100,7 +100,7 @@ Gitoxide follows a modular architecture with many specialized crates:
 
 ### Key Components
 
-1. **Repository Layer**: 
+1. **Repository Layer**:
    - Repository discovery, initialization, and access
    - Reference management (branches, tags)
    - Object storage and retrieval
