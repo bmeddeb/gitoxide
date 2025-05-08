@@ -94,7 +94,7 @@ var/
 *.egg
 
 .claude/
-claude.m
+claude.md
 **/.claude/settings.local.json
 
 **/CLAUDE.local.md
