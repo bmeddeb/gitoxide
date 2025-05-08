@@ -81,7 +81,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-validate](./gix-validate/) | Input validation functionality |
 | [x] | [gix-worktree](./gix-worktree/) | Git worktree handling |
 | [ ] | [gix-worktree-state](./gix-worktree-state/) | Worktree state management |
-| [ ] | [gix-worktree-stream](./gix-worktree-stream/) | Worktree streaming functionality |
+| [x] | [gix-worktree-stream](./gix-worktree-stream/) | Worktree streaming functionality |
 
 ## Documentation Structure
 
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 30
-- Remaining: 32
+- Documented: 31
+- Remaining: 31
