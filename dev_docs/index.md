@@ -51,8 +51,8 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-negotiate](./gix-negotiate/) | Network protocol negotiation |
 | [ ] | [gix-note](./gix-note/) | Git notes functionality |
 | [x] | [gix-object](./gix-object/) | Git object handling |
-| [ ] | [gix-odb](./gix-odb/) | Object database functionality |
-| [ ] | [gix-pack](./gix-pack/) | Pack file handling |
+| [x] | [gix-odb](./gix-odb/) | Object database functionality |
+| [x] | [gix-pack](./gix-pack/) | Pack file handling |
 | [x] | [gix-packetline](./gix-packetline/) | Async packetline protocol implementation |
 | [x] | [gix-packetline-blocking](./gix-packetline-blocking/) | Blocking packetline protocol implementation |
 | [x] | [gix-path](./gix-path/) | Path handling utilities |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 21
-- Remaining: 41
+- Documented: 23
+- Remaining: 39

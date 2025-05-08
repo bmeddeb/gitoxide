@@ -58,8 +58,8 @@ These crates depend on only one gitoxide crate:
 - [x] `gix-config-value`: Config value parsing
 
 **Git Operations**:
-- [ ] `gix-odb`: Object database
-- [ ] `gix-pack`: Pack file handling
+- [x] `gix-odb`: Object database
+- [x] `gix-pack`: Pack file handling
 - [ ] `gix-diff`: Diff implementation
 - [ ] `gix-status`: Status implementation
 
@@ -82,8 +82,8 @@ These crates depend on only one gitoxide crate:
 ## Progress
 
 - Total crates: 62
-- Documented: 21
-- Remaining: 41
+- Documented: 23
+- Remaining: 39
 
 ## Next Steps
 
