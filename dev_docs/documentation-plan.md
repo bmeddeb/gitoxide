@@ -70,7 +70,7 @@ These crates depend on only one gitoxide crate:
 
 **Filesystem Operations**:
 - [x] `gix-fs`: Filesystem operations
-- [ ] `gix-worktree`: Worktree handling
+- [x] `gix-worktree`: Worktree handling
 - [ ] `gix-worktree-stream`: Worktree streaming
 - [ ] `gix-dir`: Directory walking
 
@@ -82,7 +82,7 @@ These crates depend on only one gitoxide crate:
 ## Progress
 
 - Total crates: 62
-- Documented: 29
-- Remaining: 33
+- Documented: 30
+- Remaining: 32
 
 This approach will create coherent documentation that follows the natural structure of the codebase, making it easier for new developers to understand how components fit together.
