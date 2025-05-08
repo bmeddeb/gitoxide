@@ -45,7 +45,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [ ] | [gix-index](./gix-index/) | Git index handling |
 | [ ] | [gix-lfs](./gix-lfs/) | Git LFS implementation |
 | [ ] | [gix-lock](./gix-lock/) | File locking functionality |
-| [ ] | [gix-macros](./gix-macros/) | Procedural macros |
+| [x] | [gix-macros](./gix-macros/) | Procedural macros |
 | [ ] | [gix-mailmap](./gix-mailmap/) | Git mailmap functionality |
 | [ ] | [gix-merge](./gix-merge/) | Git merge functionality |
 | [ ] | [gix-negotiate](./gix-negotiate/) | Network protocol negotiation |
@@ -78,7 +78,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [ ] | [gix-tui](./gix-tui/) | Terminal UI implementation |
 | [ ] | [gix-url](./gix-url/) | Git URL parsing and handling |
 | [x] | [gix-utils](./gix-utils/) | Utility functions |
-| [ ] | [gix-validate](./gix-validate/) | Input validation functionality |
+| [x] | [gix-validate](./gix-validate/) | Input validation functionality |
 | [ ] | [gix-worktree](./gix-worktree/) | Git worktree handling |
 | [ ] | [gix-worktree-state](./gix-worktree-state/) | Worktree state management |
 | [ ] | [gix-worktree-stream](./gix-worktree-stream/) | Worktree streaming functionality |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 5
-- Remaining: 57
+- Documented: 7
+- Remaining: 55

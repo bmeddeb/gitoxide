@@ -16,8 +16,8 @@ These crates depend only on external libraries:
 **Core Utilities**:
 - [x] `gix-trace`: Tracing functionality
 - [x] `gix-utils`: Common utility functions
-- [ ] `gix-validate`: Validation for git names and paths
-- [ ] `gix-macros`: Procedural macros
+- [x] `gix-validate`: Validation for git names and paths
+- [x] `gix-macros`: Procedural macros
 
 ### Level 1 (One Internal Dependency)
 These crates depend on only one gitoxide crate:
@@ -82,13 +82,13 @@ These crates depend on only one gitoxide crate:
 ## Progress
 
 - Total crates: 62
-- Documented: 5
-- Remaining: 57
+- Documented: 7
+- Remaining: 55
 
 ## Next Steps
 
-1. Complete documentation for Level 0 crates
-2. Move to Level 1 crates
+1. ✅ Complete documentation for Level 0 crates
+2. Proceed with documentation for Level 1 crates
 3. Continue up the dependency hierarchy
 
 This approach will create coherent documentation that follows the natural structure of the codebase, making it easier for new developers to understand how components fit together.
