@@ -23,7 +23,7 @@ These crates depend only on external libraries:
 These crates depend on only one gitoxide crate:
 
 **Core**:
-- [ ] `gix-hashtable`: Hashtable optimized for ObjectId keys
+- [x] `gix-hashtable`: Hashtable optimized for ObjectId keys
 
 **Filesystem**:
 - [ ] `gix-path`: Path manipulation and conversions
@@ -82,8 +82,8 @@ These crates depend on only one gitoxide crate:
 ## Progress
 
 - Total crates: 62
-- Documented: 7
-- Remaining: 55
+- Documented: 8
+- Remaining: 54
 
 ## Next Steps
 
