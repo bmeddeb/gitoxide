@@ -17,8 +17,9 @@ The primary task is to create comprehensive documentation for each crate in the 
    - Examples of usage
 
 4. follow the template in dev_docs/template.md to create a new documentation page
-5. Create use_cases.md to generate use cases.Intended Audience, problems -> solution, with example code when applicable. Create other markdown files as needed.
+5. Create use_cases.md to generate use cases as follow: Intended Audience, problems -> solution, with example code when applicable. Create other markdown files as needed.
 6. add the new page to the documentation plan and index
+7. update index.md
 
 
 This comprehensive documentation effort will serve as a guide for development and help in understanding the entire codebase.

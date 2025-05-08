@@ -26,8 +26,8 @@ The following table tracks the documentation status for each crate in the worksp
 | [ ] | [gix-chunk](./gix-chunk/) | Chunk file handling |
 | [ ] | [gix-command](./gix-command/) | Git command execution |
 | [ ] | [gix-commitgraph](./gix-commitgraph/) | Commit graph handling |
-| [ ] | [gix-config](./gix-config/) | Git configuration handling |
-| [ ] | [gix-config-value](./gix-config-value/) | Git configuration value parsing |
+| [x] | [gix-config](./gix-config/) | Git configuration handling |
+| [x] | [gix-config-value](./gix-config-value/) | Git configuration value parsing |
 | [ ] | [gix-credentials](./gix-credentials/) | Credential handling |
 | [x] | [gix-date](./gix-date/) | Git date parsing and formatting |
 | [ ] | [gix-diff](./gix-diff/) | Git diff implementation |
@@ -42,7 +42,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-hash](./gix-hash/) | Git hash types and operations |
 | [x] | [gix-hashtable](./gix-hashtable/) | Hash table implementation |
 | [ ] | [gix-ignore](./gix-ignore/) | Git ignore handling |
-| [ ] | [gix-index](./gix-index/) | Git index handling |
+| [x] | [gix-index](./gix-index/) | Git index handling |
 | [ ] | [gix-lfs](./gix-lfs/) | Git LFS implementation |
 | [ ] | [gix-lock](./gix-lock/) | File locking functionality |
 | [x] | [gix-macros](./gix-macros/) | Procedural macros |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 18
-- Remaining: 44
+- Documented: 21
+- Remaining: 41

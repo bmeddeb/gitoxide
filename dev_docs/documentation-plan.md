@@ -53,9 +53,9 @@ These crates depend on only one gitoxide crate:
 
 **Git Data Model**:
 - [x] `gix-ref`: Reference handling
-- [ ] `gix-index`: Index file handling
-- [ ] `gix-config`: Config file handling
-- [ ] `gix-config-value`: Config value parsing
+- [x] `gix-index`: Index file handling
+- [x] `gix-config`: Config file handling
+- [x] `gix-config-value`: Config value parsing
 
 **Git Operations**:
 - [ ] `gix-odb`: Object database
@@ -82,8 +82,8 @@ These crates depend on only one gitoxide crate:
 ## Progress
 
 - Total crates: 62
-- Documented: 18
-- Remaining: 44
+- Documented: 21
+- Remaining: 41
 
 ## Next Steps
 
