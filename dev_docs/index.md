@@ -49,7 +49,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-mailmap](./gix-mailmap/) | Git mailmap functionality |
 | [x] | [gix-merge](./gix-merge/) | Git merge functionality |
 | [x] | [gix-negotiate](./gix-negotiate/) | Network protocol negotiation |
-| [ ] | [gix-note](./gix-note/) | Git notes functionality |
+| [x] | [gix-note](./gix-note/) | Git notes functionality |
 | [x] | [gix-object](./gix-object/) | Git object handling |
 | [x] | [gix-odb](./gix-odb/) | Object database functionality |
 | [x] | [gix-pack](./gix-pack/) | Pack file handling |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 56
-- Remaining: 6
+- Documented: 57
+- Remaining: 5
