@@ -6,8 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 The primary task is to create comprehensive documentation for each crate in the gitoxide workspace. This entails:
 
-1. Creating a `dev_docs/` directory at the repository root
-2. Creating subdirectories for each crate within `dev_docs/`
+1. cd into the `dev_docs` directory
+2. Check dev_docs/documentation-plan.md for the current status of documentation
 3. Creating detailed markdown documentation for each crate covering:
    - Architecture and design
    - All structs, functions, methods, and traits
@@ -16,7 +16,10 @@ The primary task is to create comprehensive documentation for each crate in the 
    - Feature flags and their effects
    - Examples of usage
 
-4. Creating an index.md file at the root of `dev_docs/` with a checklist of all crates and their documentation status
+4. follow the template in dev_docs/template.md to create a new documentation page
+5. add the new page to the documentation plan
+6. verify if the crate needs usage examples, use cases, or other documentation and create them if needed
+
 
 This comprehensive documentation effort will serve as a guide for development and help in understanding the entire codebase.
 
