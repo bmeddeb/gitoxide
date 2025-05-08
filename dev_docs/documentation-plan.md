@@ -29,7 +29,7 @@ These crates depend on only one gitoxide crate:
 - [x] `gix-path`: Path manipulation and conversions
 
 **Security/Permissions**:
-- [ ] `gix-sec`: Security and trust model
+- [x] `gix-sec`: Security and trust model
 
 ### Level 2 (Two Internal Dependencies)
 
@@ -82,8 +82,8 @@ These crates depend on only one gitoxide crate:
 ## Progress
 
 - Total crates: 62
-- Documented: 9
-- Remaining: 53
+- Documented: 10
+- Remaining: 52
 
 ## Next Steps
 

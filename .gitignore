@@ -96,3 +96,5 @@ var/
 .claude/
 claude.m
 **/.claude/settings.local.json
+
+**/CLAUDE.local.md
