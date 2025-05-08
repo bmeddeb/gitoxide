@@ -35,7 +35,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-discover](./gix-discover/) | Repository discovery functionality |
 | [x] | [gix-features](./gix-features/) | Feature flags and utilities |
 | [x] | [gix-fetchhead](./gix-fetchhead/) | FETCH_HEAD handling |
-| [ ] | [gix-filter](./gix-filter/) | Git filter functionality |
+| [x] | [gix-filter](./gix-filter/) | Git filter functionality |
 | [x] | [gix-fs](./gix-fs/) | Filesystem operations |
 | [ ] | [gix-fsck](./gix-fsck/) | Repository integrity checking |
 | [ ] | [gix-glob](./gix-glob/) | Glob pattern matching |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 42
-- Remaining: 20
+- Documented: 43
+- Remaining: 19
