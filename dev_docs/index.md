@@ -36,7 +36,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-features](./gix-features/) | Feature flags and utilities |
 | [ ] | [gix-fetchhead](./gix-fetchhead/) | FETCH_HEAD handling |
 | [ ] | [gix-filter](./gix-filter/) | Git filter functionality |
-| [ ] | [gix-fs](./gix-fs/) | Filesystem operations |
+| [x] | [gix-fs](./gix-fs/) | Filesystem operations |
 | [ ] | [gix-fsck](./gix-fsck/) | Repository integrity checking |
 | [ ] | [gix-glob](./gix-glob/) | Glob pattern matching |
 | [x] | [gix-hash](./gix-hash/) | Git hash types and operations |
@@ -76,7 +76,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-transport](./gix-transport/) | Transport protocol implementation |
 | [ ] | [gix-traverse](./gix-traverse/) | Object graph traversal |
 | [ ] | [gix-tui](./gix-tui/) | Terminal UI implementation |
-| [ ] | [gix-url](./gix-url/) | Git URL parsing and handling |
+| [x] | [gix-url](./gix-url/) | Git URL parsing and handling |
 | [x] | [gix-utils](./gix-utils/) | Utility functions |
 | [x] | [gix-validate](./gix-validate/) | Input validation functionality |
 | [ ] | [gix-worktree](./gix-worktree/) | Git worktree handling |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 27
-- Remaining: 35
+- Documented: 29
+- Remaining: 33

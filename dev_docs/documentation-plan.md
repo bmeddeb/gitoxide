@@ -66,10 +66,10 @@ These crates depend on only one gitoxide crate:
 **Network**:
 - [x] `gix-transport`: Transport protocol
 - [x] `gix-protocol`: Git protocol
-- [ ] `gix-url`: URL parsing and handling
+- [x] `gix-url`: URL parsing and handling
 
 **Filesystem Operations**:
-- [ ] `gix-fs`: Filesystem operations
+- [x] `gix-fs`: Filesystem operations
 - [ ] `gix-worktree`: Worktree handling
 - [ ] `gix-worktree-stream`: Worktree streaming
 - [ ] `gix-dir`: Directory walking
@@ -82,7 +82,7 @@ These crates depend on only one gitoxide crate:
 ## Progress
 
 - Total crates: 62
-- Documented: 27
-- Remaining: 35
+- Documented: 29
+- Remaining: 33
 
 This approach will create coherent documentation that follows the natural structure of the codebase, making it easier for new developers to understand how components fit together.
