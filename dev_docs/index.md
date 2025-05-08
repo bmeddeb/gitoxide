@@ -73,7 +73,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [ ] | [gix-tempfile](./gix-tempfile/) | Temporary file management |
 | [ ] | [gix-tix](./gix-tix/) | Terminal UI components |
 | [x] | [gix-trace](./gix-trace/) | Tracing and logging functionality |
-| [ ] | [gix-transport](./gix-transport/) | Transport protocol implementation |
+| [x] | [gix-transport](./gix-transport/) | Transport protocol implementation |
 | [ ] | [gix-traverse](./gix-traverse/) | Object graph traversal |
 | [ ] | [gix-tui](./gix-tui/) | Terminal UI implementation |
 | [ ] | [gix-url](./gix-url/) | Git URL parsing and handling |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 25
-- Remaining: 37
+- Documented: 26
+- Remaining: 36
