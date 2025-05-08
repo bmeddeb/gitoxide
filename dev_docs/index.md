@@ -62,9 +62,9 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-quote](./gix-quote/) | String quoting utilities |
 | [ ] | [gix-rebase](./gix-rebase/) | Git rebase functionality |
 | [x] | [gix-ref](./gix-ref/) | Git reference handling |
-| [ ] | [gix-refspec](./gix-refspec/) | Git refspec handling |
-| [ ] | [gix-revision](./gix-revision/) | Git revision parsing and handling |
-| [ ] | [gix-revwalk](./gix-revwalk/) | Revision walking functionality |
+| [x] | [gix-refspec](./gix-refspec/) | Git refspec handling |
+| [x] | [gix-revision](./gix-revision/) | Git revision parsing and handling |
+| [x] | [gix-revwalk](./gix-revwalk/) | Revision walking functionality |
 | [x] | [gix-sec](./gix-sec/) | Security-related functionality |
 | [ ] | [gix-sequencer](./gix-sequencer/) | Git sequencer operations |
 | [ ] | [gix-shallow](./gix-shallow/) | Shallow repository handling |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 52
-- Remaining: 10
+- Documented: 55
+- Remaining: 7
