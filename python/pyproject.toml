@@ -9,7 +9,7 @@ authors = [
     {name = "Gitoxide Contributors"},
 ]
 description = "Python bindings for gitoxide, a fast implementation of Git"
-readme = "README.md"
+readme = "python/README.md"
 license = {text = "MIT OR Apache-2.0"}
 requires-python = ">=3.8"
 classifiers = [
@@ -28,13 +28,15 @@ dependencies = [
 "Documentation" = "https://github.com/Byron/gitoxide/tree/main/python"
 
 [tool.maturin]
-features = ["sync"]
 module-name = "gitoxide"
+manifest-path = "python/Cargo.toml"
+features = ["sync"]
+package-type = ["cdylib"]
 strip = true
-include = ["stubs/gitoxide/**/*"]
+include = ["python/stubs/gitoxide/**/*"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["python/tests"]
 python_files = "test_*.py"
 python_classes = "Test*"
 python_functions = "test_*"
