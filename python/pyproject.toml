@@ -18,8 +18,8 @@ classifiers = [
     "Topic :: Software Development :: Version Control :: Git",
 ]
 dependencies = [
+    "pip>=25.0.1",
     "pytest>=8.3.5",
-    "pytest-asyncio>=0.24.0",
 ]
 
 [project.urls]
@@ -31,6 +31,7 @@ dependencies = [
 features = ["sync"]
 module-name = "gitoxide"
 strip = true
+include = ["stubs/gitoxide/**/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -40,3 +41,10 @@ python_functions = "test_*"
 markers = ["asyncio: mark a test as an asyncio coroutine test"]
 # Exclude any Rust project tests
 norecursedirs = ["../target", "../*/tests", "*/tests"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true

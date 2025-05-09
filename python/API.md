@@ -54,6 +54,31 @@ The module defines several exception types for error handling:
 
 - `__version__` - The version of the gitoxide Python bindings
 
+## Type Stubs
+
+Type stubs are provided for better IDE autocompletion and static type checking. The stubs are distributed with the package and defined in `.pyi` files.
+
+### Available Type Definitions
+
+- `Repository` - Fully typed with parameter and return type annotations
+- Exception classes - All properly typed as subclasses of Python's built-in `Exception` class
+- `asyncio` module - Type stubs for the async API variants
+
+### Path Support
+
+The API supports both string paths and `pathlib.Path` objects:
+
+```python
+import pathlib
+import gitoxide
+
+# Using string paths
+repo1 = gitoxide.Repository.open('/path/to/repo')
+
+# Using pathlib.Path objects
+repo2 = gitoxide.Repository.open(pathlib.Path('/path/to/repo'))
+```
+
 ## Build Configuration
 
 The Python bindings can be built with different feature sets:

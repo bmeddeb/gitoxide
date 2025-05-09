@@ -36,6 +36,35 @@ is_bare = repo.is_bare()
 head = repo.head()  # Returns HEAD reference name or commit ID
 ```
 
+## Type Hints
+
+Gitoxide includes type stub files (.pyi) for better IDE support and static type checking with tools like mypy or pyright.
+
+### Installing Type Stubs
+
+The stubs are included with the package, but you can also install them manually:
+
+```bash
+python setup_stubs.py
+```
+
+### Using with Mypy
+
+Add the following to your mypy.ini or pyproject.toml:
+
+```ini
+# mypy.ini
+[mypy]
+plugins = gitoxide-stubs
+```
+
+Or in pyproject.toml:
+
+```toml
+[tool.mypy]
+plugins = ["gitoxide-stubs"]
+```
+
 ## Features
 
 - Pure Rust implementation under the hood
@@ -43,6 +72,7 @@ head = repo.head()  # Returns HEAD reference name or commit ID
 - Thread-safe
 - Memory efficient
 - High performance
+- Type hints for better IDE support
 
 ## Development
 
