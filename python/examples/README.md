@@ -1,43 +1,37 @@
 # Gitoxide Python Examples
 
-This directory contains example scripts demonstrating how to use the gitoxide Python bindings.
+This directory contains example scripts demonstrating how to use the Python bindings for gitoxide.
 
-## Examples
+## Examples List
 
-### Basic Usage (`basic_usage.py`)
+- **unified_test.py**: A comprehensive test script that tests all aspects of the gitoxide Python bindings. Run with `--all` flag to test everything, or use specific flags like `--test-repo` or `--test-objects` to test individual components.
 
-Demonstrates the fundamental operations with gitoxide:
-- Opening existing repositories
-- Creating new repositories
-- Accessing basic repository properties
+- **basic_usage.py**: Simple example showing basic repository operations.
 
-```bash
-python basic_usage.py
-```
+- **typed_example.py**: Shows how to use gitoxide with proper type annotations for better IDE support.
 
-### Repository Information Tool (`repository_info.py`)
+- **typed_stub_demo.py**: Demonstrates how the type stubs work (demonstration only).
 
-A more complete example that shows how to build a command-line tool to display information about a Git repository:
-- Detailed repository information
-- HEAD and branch information
-- Error handling
+- **async_repository.py**: Example of using the async repository interface.
 
-```bash
-# Check the current directory
-python repository_info.py
+- **async_wrapper.py**: Shows how to wrap synchronous operations in an async interface.
 
-# Check a specific repository
-python repository_info.py /path/to/repository
-```
+- **inspect_module.py**: Simple script to inspect the module structure.
 
-## Running the Examples
+## Running Examples
 
-Make sure you have the gitoxide Python bindings installed:
+Most examples can be run directly:
 
 ```bash
-cd ../  # Go to the python directory
-maturin develop
-cd examples/
+python examples/unified_test.py --all  # Run all tests
+python examples/basic_usage.py         # Run basic usage example
 ```
 
-Then run any of the example scripts.
+## Adding New Examples
+
+When adding new examples, please:
+
+1. Include proper docstrings
+2. Add error handling
+3. Make the script runnable directly with the Python interpreter
+4. Update this README.md with a description of your example
