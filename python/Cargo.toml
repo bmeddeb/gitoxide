@@ -1,0 +1,36 @@
+[package]
+name = "gitoxide-python"
+version = "0.1.0"
+edition = "2021"
+authors = ["Gitoxide Contributors"]
+description = "Python bindings for gitoxide, a fast implementation of Git"
+license = "MIT OR Apache-2.0"
+
+[lib]
+name = "gitoxide"
+crate-type = ["cdylib"]
+
+[dependencies]
+# Core gitoxide dependencies
+gix = { path = "../gix" }
+gix-features = { path = "../gix-features" }
+gix-hash = { path = "../gix-hash" }
+gix-object = { path = "../gix-object" }
+gix-ref = { path = "../gix-ref" }
+gix-config = { path = "../gix-config" }
+gix-index = { path = "../gix-index" }
+gix-diff = { path = "../gix-diff" }
+gix-traverse = { path = "../gix-traverse" }
+gix-worktree = { path = "../gix-worktree" }
+
+# PyO3 for Python bindings
+pyo3 = { version = "0.24.2", features = ["extension-module"] }
+
+# Optional async support
+tokio = { version = "1.36", optional = true, features = ["rt", "rt-multi-thread", "macros"] }
+pyo3-async-runtimes = { version = "0.24.0", optional = true, features = ["tokio-runtime"] }
+
+[features]
+default = ["sync"]
+sync = []
+async = ["tokio", "pyo3-async-runtimes"]

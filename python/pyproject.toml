@@ -1,0 +1,36 @@
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "gitoxide"
+version = "0.1.0"
+authors = [
+    {name = "Gitoxide Contributors"},
+]
+description = "Python bindings for gitoxide, a fast implementation of Git"
+readme = "README.md"
+license = {text = "MIT OR Apache-2.0"}
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Software Development :: Version Control :: Git",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Byron/gitoxide"
+"Bug Tracker" = "https://github.com/Byron/gitoxide/issues"
+"Documentation" = "https://github.com/Byron/gitoxide/tree/main/python"
+
+[tool.maturin]
+features = ["sync"]
+module-name = "gitoxide"
+strip = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+markers = ["asyncio: mark a test as an asyncio coroutine test"]
