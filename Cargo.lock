@@ -1390,6 +1390,7 @@ dependencies = [
  "gix-hash",
  "gix-index",
  "gix-object",
+ "gix-odb",
  "gix-ref",
  "gix-traverse",
  "gix-worktree",

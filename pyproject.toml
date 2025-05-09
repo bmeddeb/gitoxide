@@ -1,13 +1,27 @@
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
 [project]
 name = "gitoxide"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.13"
-dependencies = [
-    "asyncio>=3.4.3",
-    "maturin>=1.8.4",
-    "pyclean>=3.1.0",
-    "pytest>=8.3.5",
-    "pytest-asyncio>=0.26.0",
+description = "Python bindings for gitoxide, a fast implementation of Git"
+readme = "python/README.md"
+requires-python = ">=3.8"
+authors = [
+    {name = "Gitoxide Contributors"},
 ]
+license = {text = "MIT OR Apache-2.0"}
+
+[tool.maturin]
+module-name = "gitoxide"
+manifest-path = "python/Cargo.toml"
+features = ["sync"]
+strip = true
+include = ["python/stubs/gitoxide/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["python/tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
