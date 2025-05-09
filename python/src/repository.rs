@@ -2,7 +2,7 @@ use pyo3::prelude::*;
 use pyo3::types::PyType;
 use std::path::Path;
 
-use crate::errors::RepositoryError;
+use crate::errors::repository_error;
 
 /// A Git repository
 #[pyclass(unsendable)]
@@ -19,13 +19,12 @@ impl Repository {
     fn open(_cls: &Bound<'_, PyType>, path: &str) -> PyResult<Self> {
         let path = Path::new(path);
 
-        match gix::open(path) {
-            Ok(repo) => Ok(Repository { inner: repo }),
-            Err(err) => {
+        gix::open(path)
+            .map_err(|err| {
                 let msg = format!("Failed to open repository at {}: {}", path.display(), err);
-                Err(RepositoryError::new_err(msg))
-            }
-        }
+                repository_error(msg)
+            })
+            .map(|repo| Repository { inner: repo })
     }
 
     /// Initialize a new repository at the given path
@@ -40,13 +39,12 @@ impl Repository {
         // Use the appropriate init method
         let result = if bare { gix::init_bare(path) } else { gix::init(path) };
 
-        match result {
-            Ok(repo) => Ok(Repository { inner: repo }),
-            Err(err) => {
+        result
+            .map_err(|err| {
                 let msg = format!("Failed to initialize repository at {}: {}", path.display(), err);
-                Err(RepositoryError::new_err(msg))
-            }
-        }
+                repository_error(msg)
+            })
+            .map(|repo| Repository { inner: repo })
     }
 
     /// Get the path to the repository's .git directory
@@ -67,13 +65,15 @@ impl Repository {
     /// Get the name of the HEAD reference (e.g., "refs/heads/main")
     /// or the commit ID if HEAD is detached
     fn head(&self) -> PyResult<String> {
-        match self.inner.head_ref() {
-            Ok(Some(reference)) => Ok(reference.name().as_bstr().to_string()),
-            Ok(None) => Err(RepositoryError::new_err("Repository HEAD is not set")),
-            Err(err) => {
+        self.inner
+            .head_ref()
+            .map_err(|err| {
                 let msg = format!("Failed to get HEAD: {}", err);
-                Err(RepositoryError::new_err(msg))
-            }
-        }
+                repository_error(msg)
+            })
+            .and_then(|opt_ref| match opt_ref {
+                Some(reference) => Ok(reference.name().as_bstr().to_string()),
+                None => Err(repository_error("Repository HEAD is not set")),
+            })
     }
 }

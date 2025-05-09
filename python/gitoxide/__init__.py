@@ -9,18 +9,42 @@ built on top of the Gitoxide library.
 from gitoxide.gitoxide import (
     Repository,
     __version__,
+    # All error types
     GitoxideError,
     RepositoryError,
     ObjectError,
-    ReferenceError
+    ReferenceError,
+    ConfigError,
+    IndexError,
+    DiffError,
+    TraverseError,
+    WorktreeError,
+    RevisionError,
+    RemoteError,
+    TransportError,
+    ProtocolError,
+    PackError,
+    FSError
 )
 
 # Re-export main symbols
 __all__ = [
     "Repository",
     "__version__",
+    # Error types
     "GitoxideError",
     "RepositoryError",
     "ObjectError",
-    "ReferenceError"
+    "ReferenceError",
+    "ConfigError",
+    "IndexError",
+    "DiffError",
+    "TraverseError",
+    "WorktreeError",
+    "RevisionError",
+    "RemoteError",
+    "TransportError",
+    "ProtocolError",
+    "PackError",
+    "FSError"
 ]
