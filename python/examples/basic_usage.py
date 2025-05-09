@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 """
 Basic usage examples for the gitoxide Python bindings.
 """
@@ -15,7 +15,8 @@ def main():
     # Example 1: Open an existing repository
     try:
         # Try to open the current directory as a repository
-        repo = gitoxide.Repository.open("/Users/ben/PycharmProjects/SER402-Team3")
+        repo = gitoxide.Repository.open(
+            ".")
         print(f"\nSuccessfully opened existing repository:")
         print(f"  Git directory: {repo.git_dir()}")
         print(f"  Working directory: {repo.work_dir()}")

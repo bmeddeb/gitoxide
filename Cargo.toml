@@ -286,7 +286,7 @@ members = [
     "gix-config/tests",
     "gix-traverse/tests",
     "gix-shallow",
-    "gitbench"
+    "python"
 ]
 
 [workspace.dependencies]

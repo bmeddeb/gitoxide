@@ -1318,21 +1318,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "07e28edb80900c19c28f1072f2e8aeca7fa06b23cd4169cefe1af5aa3260783f"
 
 [[package]]
-name = "gitbench"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "futures",
- "gix",
- "gix-features",
- "pyo3",
- "pyo3-async-runtimes",
- "tempfile",
- "tokio",
- "tracing",
-]
-
-[[package]]
 name = "gitoxide"
 version = "0.44.0"
 dependencies = [
@@ -1392,6 +1377,25 @@ dependencies = [
  "tracing",
  "tracing-forest",
  "tracing-subscriber",
+]
+
+[[package]]
+name = "gitoxide-python"
+version = "0.1.0"
+dependencies = [
+ "gix",
+ "gix-config",
+ "gix-diff",
+ "gix-features",
+ "gix-hash",
+ "gix-index",
+ "gix-object",
+ "gix-ref",
+ "gix-traverse",
+ "gix-worktree",
+ "pyo3",
+ "pyo3-async-runtimes",
+ "tokio",
 ]
 
 [[package]]
@@ -3958,19 +3962,7 @@ dependencies = [
  "once_cell",
  "pin-project-lite",
  "pyo3",
- "pyo3-async-runtimes-macros",
  "tokio",
-]
-
-[[package]]
-name = "pyo3-async-runtimes-macros"
-version = "0.24.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cf103ba4062fbb1e8022d9ed9b9830fbab074b2db0a0496c78e45a62f4330bcd"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.101",
 ]
 
 [[package]]
@@ -4987,9 +4979,7 @@ dependencies = [
  "bytes",
  "libc",
  "mio 1.0.3",
- "parking_lot",
  "pin-project-lite",
- "signal-hook-registry",
  "socket2",
  "tokio-macros",
  "windows-sys 0.52.0",
