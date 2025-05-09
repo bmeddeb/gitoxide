@@ -43,7 +43,7 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-hashtable](./gix-hashtable/) | Hash table implementation |
 | [x] | [gix-ignore](./gix-ignore/) | Git ignore handling |
 | [x] | [gix-index](./gix-index/) | Git index handling |
-| [ ] | [gix-lfs](./gix-lfs/) | Git LFS implementation |
+| [x] | [gix-lfs](./gix-lfs/) | Git LFS implementation |
 | [x] | [gix-lock](./gix-lock/) | File locking functionality |
 | [x] | [gix-macros](./gix-macros/) | Procedural macros |
 | [x] | [gix-mailmap](./gix-mailmap/) | Git mailmap functionality |
@@ -60,21 +60,21 @@ The following table tracks the documentation status for each crate in the worksp
 | [x] | [gix-prompt](./gix-prompt/) | User prompt functionality |
 | [x] | [gix-protocol](./gix-protocol/) | Git protocol implementation |
 | [x] | [gix-quote](./gix-quote/) | String quoting utilities |
-| [ ] | [gix-rebase](./gix-rebase/) | Git rebase functionality |
+| [x] | [gix-rebase](./gix-rebase/) | Git rebase functionality |
 | [x] | [gix-ref](./gix-ref/) | Git reference handling |
 | [x] | [gix-refspec](./gix-refspec/) | Git refspec handling |
 | [x] | [gix-revision](./gix-revision/) | Git revision parsing and handling |
 | [x] | [gix-revwalk](./gix-revwalk/) | Revision walking functionality |
 | [x] | [gix-sec](./gix-sec/) | Security-related functionality |
-| [ ] | [gix-sequencer](./gix-sequencer/) | Git sequencer operations |
-| [ ] | [gix-shallow](./gix-shallow/) | Shallow repository handling |
+| [x] | [gix-sequencer](./gix-sequencer/) | Git sequencer operations |
+| [x] | [gix-shallow](./gix-shallow/) | Shallow repository handling |
 | [x] | [gix-status](./gix-status/) | Repository status functionality |
 | [ ] | [gix-submodule](./gix-submodule/) | Git submodule handling |
 | [x] | [gix-tempfile](./gix-tempfile/) | Temporary file management |
-| [ ] | [gix-tix](./gix-tix/) | Terminal UI components |
+| [x] | [gix-tix](./gix-tix/) | Terminal UI components |
 | [x] | [gix-trace](./gix-trace/) | Tracing and logging functionality |
 | [x] | [gix-transport](./gix-transport/) | Transport protocol implementation |
-| [ ] | [gix-traverse](./gix-traverse/) | Object graph traversal |
+| [x] | [gix-traverse](./gix-traverse/) | Object graph traversal |
 | [ ] | [gix-tui](./gix-tui/) | Terminal UI implementation |
 | [x] | [gix-url](./gix-url/) | Git URL parsing and handling |
 | [x] | [gix-utils](./gix-utils/) | Utility functions |
@@ -98,5 +98,5 @@ Each crate's documentation follows this structure:
 ## Progress Tracking
 
 - Total crates: 62
-- Documented: 57
-- Remaining: 5
+- Documented: 62
+- Remaining: 0
