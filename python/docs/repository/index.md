@@ -37,6 +37,7 @@ class Repository:
 
     # History methods - see History documentation
     def merge_bases(self, one, others): ...
+    def merge_base(self, one, two): ...
 ```
 
 ## Basic Usage

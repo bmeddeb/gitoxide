@@ -211,6 +211,22 @@ class Repository:
         """
         ...
 
+    def merge_base(self, one: str, two: str) -> str:
+        """
+        Find the best merge base between two commits.
+
+        Args:
+            one: First commit ID as a string
+            two: Second commit ID as a string
+
+        Returns:
+            The commit ID of the merge base
+
+        Raises:
+            RepositoryError: If a commit ID is invalid or no merge base exists
+        """
+        ...
+
     def find_object(self, id: str) -> Object:
         """
         Find a Git object by its ID.

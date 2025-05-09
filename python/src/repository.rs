@@ -562,4 +562,47 @@ impl Repository {
             .map_err(|err| repository_error(format!("Failed to find merge bases: {}", err)))
             .map(|bases| bases.iter().map(|id| id.to_string()).collect())
     }
+
+    /// Find the best merge base between two commits
+    ///
+    /// Args:
+    ///     one: First commit ID as a string
+    ///     two: Second commit ID as a string
+    ///
+    /// Returns:
+    ///     The commit ID of the merge base
+    ///
+    /// Raises:
+    ///     RepositoryError: If a commit ID is invalid or no merge base exists
+    fn merge_base(&self, one: &str, two: &str) -> PyResult<String> {
+        // Parse the commit IDs
+        let first_id = ObjectId::from_hex(one.as_bytes())
+            .map_err(|_| repository_error(format!("Invalid object ID for first commit: {}", one)))?;
+
+        let second_id = ObjectId::from_hex(two.as_bytes())
+            .map_err(|_| repository_error(format!("Invalid object ID for second commit: {}", two)))?;
+
+        // Find the merge base
+        self.inner
+            .merge_base(first_id, second_id)
+            .map_err(|err| repository_error(format!("Failed to find merge base: {}", err)))
+            .map(|id| id.to_string())
+    }
+
+    /// Parse a revision specification and return a single commit/object ID
+    ///
+    /// Args:
+    ///     spec: The revision specification (e.g., "HEAD", "main~3", "v1.0^{}")
+    ///
+    /// Returns:
+    ///     The object ID that the revision specification resolves to
+    ///
+    /// Raises:
+    ///     RepositoryError: If the specification is invalid or cannot be resolved
+    fn rev_parse(&self, spec: &str) -> PyResult<String> {
+        self.inner
+            .rev_parse_single(spec)
+            .map_err(|err| repository_error(format!("Failed to parse revision '{}': {}", spec, err)))
+            .map(|id| id.to_string())
+    }
 }

@@ -19,6 +19,7 @@ Currently, the following history-related methods are available:
 | Method | Description |
 | ------ | ----------- |
 | `Repository.merge_bases(one, others)` | Find all merge bases (common ancestors) between two or more commits |
+| `Repository.merge_base(one, two)` | Find the best merge base (common ancestor) between two commits |
 
 ## Example Usage
 

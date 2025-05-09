@@ -49,6 +49,40 @@ else:
     print("No common ancestor found")
 ```
 
+## Repository.merge_base(one, two)
+
+Find the best merge base (common ancestor) between two commits.
+
+**Parameters:**
+- `one`: `str` - The object ID (SHA) of the first commit
+- `two`: `str` - The object ID (SHA) of the second commit
+
+**Returns:**
+- `str` - The commit object ID of the best merge base between the two commits
+
+**Raises:**
+- `RepositoryError` - If any commit ID is invalid or no merge base exists
+
+**Example:**
+```python
+import gitoxide
+
+repo = gitoxide.Repository.open("/path/to/repo")
+
+# Find merge base between two branches (using their commit IDs)
+master_id = "1234567890abcdef1234567890abcdef12345678"
+feature_id = "abcdef1234567890abcdef1234567890abcdef12"
+
+try:
+    # Find the best merge base
+    merge_base = repo.merge_base(master_id, feature_id)
+    print(f"Merge base: {merge_base}")
+except Exception as e:
+    print(f"Error: {e}")
+```
+
+This method is similar to `merge_bases`, but it specifically returns the single "best" merge base rather than all merge bases. In simple cases, there will only be one merge base, but in complex histories with multiple merge bases, Git chooses the most appropriate one.
+
 ## Multiple Merge Bases
 
 In complex repository histories, especially those with merge commits, there can be multiple merge bases between branches. The method returns all of them, allowing you to process them according to your application's needs.
