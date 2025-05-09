@@ -67,3 +67,51 @@ class TestRepository:
                 assert head.startswith("refs/heads/")
             except Exception as e:
                 assert "HEAD is not set" in str(e)
+
+    def test_merge_bases(self):
+        """Test finding merge bases between commits."""
+        with tempfile.TemporaryDirectory() as temp_dir:
+            # Initialize a new repository
+            repo = gitoxide.Repository.init(temp_dir, bare=False)
+
+            # Print available methods to debug
+            print("Available methods:", dir(repo))
+
+            # We need to create a commit history with merge bases
+            # Set up git user info
+            os.system(f"cd {temp_dir} && git config user.name 'Test User'")
+            os.system(
+                f"cd {temp_dir} && git config user.email 'test@example.com'")
+
+            # Create initial commit
+            os.system(
+                f"cd {temp_dir} && echo 'Initial content' > file.txt && git add file.txt && git commit -m 'Initial commit'")
+
+            # Get the initial commit ID
+            initial_commit = os.popen(
+                f"cd {temp_dir} && git rev-parse HEAD").read().strip()
+
+            # Create two branches from initial commit
+            os.system(f"cd {temp_dir} && git checkout -b branch1")
+            os.system(
+                f"cd {temp_dir} && echo 'Branch 1 content' >> file.txt && git add file.txt && git commit -m 'Branch 1 commit'")
+            branch1_commit = os.popen(
+                f"cd {temp_dir} && git rev-parse HEAD").read().strip()
+
+            os.system(
+                f"cd {temp_dir} && git checkout -b branch2 {initial_commit}")
+            os.system(
+                f"cd {temp_dir} && echo 'Branch 2 content' >> file.txt && git add file.txt && git commit -m 'Branch 2 commit'")
+            branch2_commit = os.popen(
+                f"cd {temp_dir} && git rev-parse HEAD").read().strip()
+
+            # Test merge_bases
+            # The merge base of branch1_commit and branch2_commit should be initial_commit
+            merge_bases = repo.merge_bases(branch1_commit, [branch2_commit])
+            assert len(merge_bases) == 1
+            assert merge_bases[0] == initial_commit
+
+            # Test with invalid commit ID
+            with pytest.raises(Exception) as excinfo:
+                repo.merge_bases("invalidcommitid", [branch1_commit])
+            assert "Invalid object ID" in str(excinfo.value)

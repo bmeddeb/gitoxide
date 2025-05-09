@@ -524,4 +524,42 @@ impl Repository {
                 None => Err(repository_error("Repository HEAD is not set")),
             })
     }
+
+    /// Find all merge bases between one commit and multiple other commits
+    ///
+    /// Args:
+    ///     one: First commit ID as a string
+    ///     others: List of other commit IDs to find merge bases with
+    ///
+    /// Returns:
+    ///     List of commit IDs that are merge bases
+    ///
+    /// Raises:
+    ///     RepositoryError: If one of the commit IDs is invalid
+    fn merge_bases(&self, one: &str, others: Vec<String>) -> PyResult<Vec<String>> {
+        // Parse the first commit ID
+        let first_id = ObjectId::from_hex(one.as_bytes())
+            .map_err(|_| repository_error(format!("Invalid object ID for first commit: {}", one)))?;
+
+        // Parse the other commit IDs
+        let mut other_ids = Vec::with_capacity(others.len());
+        for (idx, other) in others.iter().enumerate() {
+            let id = ObjectId::from_hex(other.as_bytes())
+                .map_err(|_| repository_error(format!("Invalid object ID for other commit {}: {}", idx, other)))?;
+            other_ids.push(id);
+        }
+
+        // Get the commit graph
+        let cache = self
+            .inner
+            .commit_graph_if_enabled()
+            .map_err(|err| repository_error(format!("Failed to retrieve commit graph: {}", err)))?;
+        let mut graph = self.inner.revision_graph(cache.as_ref());
+
+        // Find the merge bases
+        self.inner
+            .merge_bases_many_with_graph(first_id, &other_ids, &mut graph)
+            .map_err(|err| repository_error(format!("Failed to find merge bases: {}", err)))
+            .map(|bases| bases.iter().map(|id| id.to_string()).collect())
+    }
 }

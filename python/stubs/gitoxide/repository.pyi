@@ -195,6 +195,22 @@ class Repository:
         """
         ...
 
+    def merge_bases(self, one: str, others: List[str]) -> List[str]:
+        """
+        Find all merge bases between one commit and multiple other commits.
+
+        Args:
+            one: First commit ID as a string
+            others: List of other commit IDs to find merge bases with
+
+        Returns:
+            List of commit IDs that are merge bases
+
+        Raises:
+            RepositoryError: If one of the commit IDs is invalid
+        """
+        ...
+
     def find_object(self, id: str) -> Object:
         """
         Find a Git object by its ID.
