@@ -17,6 +17,7 @@ The Gitoxide Python bindings offer:
 - [Objects](objects/index.md) - Working with Git objects (blobs, commits, trees, tags)
 - [References](references/index.md) - Working with Git references (branches, tags)
 - [History](history/index.md) - Traversing and analyzing commit history
+- [Configuration](config/index.md) - Reading repository configuration
 - [Errors](errors/index.md) - Error handling
 
 ## Installation
@@ -71,7 +72,13 @@ The Python bindings for Gitoxide are under active development. Currently impleme
 - Reference management and creation
 
 Additional features coming soon:
-- Revision and history traversal
 - Remote operations
-- Configuration management
 - Index and working directory operations
+- Command execution context
+
+Implemented features:
+- Basic repository operations
+- Object access and manipulation
+- Reference management and creation
+- Revision and history traversal
+- Configuration management

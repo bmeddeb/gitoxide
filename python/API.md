@@ -47,6 +47,7 @@ repo = gitoxide.Repository.init('/path/to/new/repo', bare=False)
 - `shallow_commits()` - Get list of shallow commits (None if not a shallow clone)
 - `shallow_file()` - Get path to the shallow file
 - `object_hash()` - Get hash algorithm used in this repository (e.g., "Sha1")
+- `config()` - Access the repository's configuration
 
 **Revision and History Methods:**
 
@@ -95,6 +96,16 @@ Represents a Git reference (branch, tag, etc.):
 - `name` - The full name of the reference (e.g., "refs/heads/main")
 - `target` - The target (either an object ID or symbolic reference name)
 - `is_symbolic` - Whether the reference is symbolic
+
+#### `Config`
+
+Provides access to Git repository configuration:
+- `boolean(key)` - Get a boolean value from the configuration
+- `integer(key)` - Get an integer value from the configuration
+- `string(key)` - Get a string value from the configuration
+- `values(key)` - Get a list of values from a multi-valued configuration key
+- `entries()` - Get a dictionary of all configuration entries
+- `has_key(key)` - Check if a configuration key exists
 
 ### Exception Types
 

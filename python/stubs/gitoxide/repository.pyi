@@ -46,6 +46,81 @@ class Tag(Object):
     pass
 
 
+class Config:
+    """Git repository configuration."""
+
+    def boolean(self, key: str) -> Optional[bool]:
+        """
+        Get a boolean value from the configuration.
+
+        Args:
+            key: The configuration key (e.g., "core.bare")
+
+        Returns:
+            The boolean value if the key exists and is a valid boolean,
+            or None if the key doesn't exist
+        """
+        ...
+
+    def integer(self, key: str) -> Optional[int]:
+        """
+        Get an integer value from the configuration.
+
+        Args:
+            key: The configuration key (e.g., "core.compression")
+
+        Returns:
+            The integer value if the key exists and is a valid integer,
+            or None if the key doesn't exist
+        """
+        ...
+
+    def string(self, key: str) -> Optional[str]:
+        """
+        Get a string value from the configuration.
+
+        Args:
+            key: The configuration key (e.g., "user.name")
+
+        Returns:
+            The string value if the key exists, or None if the key doesn't exist
+        """
+        ...
+
+    def values(self, key: str) -> List[str]:
+        """
+        Get a list of values from a multi-valued configuration key.
+
+        Args:
+            key: The configuration key (e.g., "remote.origin.fetch")
+
+        Returns:
+            A list of string values associated with the key, or an empty list if the key doesn't exist
+        """
+        ...
+
+    def entries(self) -> Dict[str, str]:
+        """
+        List common configuration entries.
+
+        Returns:
+            A dictionary of {key: value} pairs for common configuration entries
+        """
+        ...
+
+    def has_key(self, key: str) -> bool:
+        """
+        Check if a configuration key exists.
+
+        Args:
+            key: The configuration key to check
+
+        Returns:
+            True if the key exists, False otherwise
+        """
+        ...
+
+
 class Repository:
     """A Git repository."""
 
@@ -254,6 +329,15 @@ class Repository:
 
         Raises:
             RepositoryError: If the specification is invalid or cannot be resolved
+        """
+        ...
+
+    def config(self) -> Config:
+        """
+        Access the repository's configuration.
+
+        Returns:
+            A Config object for accessing repository configuration
         """
         ...
 

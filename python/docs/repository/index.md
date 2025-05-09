@@ -39,6 +39,10 @@ class Repository:
     def merge_bases(self, one, others): ...
     def merge_base(self, one, two): ...
     def rev_parse(self, spec): ...
+    def merge_base_octopus(self, commits): ...
+
+    # Configuration methods - see Configuration documentation
+    def config(self): ...
 ```
 
 ## Basic Usage
@@ -58,6 +62,7 @@ new_repo = gitoxide.Repository.init("/path/to/new/repo", bare=False)
 - [Opening & Creating Repositories](opening.md)
 - [Basic Repository Properties](properties.md)
 - [Shallow Repository Operations](shallow.md)
+- [Configuration](config.md)
 
 ## Class Methods
 

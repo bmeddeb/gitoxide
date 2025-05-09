@@ -42,7 +42,7 @@ This document tracks the current progress and future work for the gitoxide Pytho
 
 ## In Progress
 
-1. Async API
+1. Async API ### Skip for now.
    - [x] Basic repository operations (open, init, head, shallow_commits)
    - [ ] Object manipulation (find_object, etc.)
    - [ ] Reference management (references, etc.)
@@ -55,8 +55,11 @@ This document tracks the current progress and future work for the gitoxide Pytho
    - [x] `revparse()` - Parse revision specifiers
 
 2. Configuration
-   - [ ] `config()` - Access repository configuration
+   - [x] `config()` - Access repository configuration
    - [ ] `command_context()` - Get command execution context
+   - [x] Improve `Config.values()` method to properly handle multi-valued keys (currently using hardcoded values)
+   - [x] Enhance `Config.integer()` method to handle all numeric formatting cases
+   - [x] Add proper config scan for `Config.entries()` to list all configuration entries
 
 3. Network Operations
    - [ ] `clone()` - Clone repository

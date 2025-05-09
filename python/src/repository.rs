@@ -3,6 +3,7 @@ use pyo3::prelude::*;
 use pyo3::types::{PyBytes, PyType};
 use std::path::Path;
 
+use crate::config::Config;
 use crate::errors::repository_error;
 
 #[pyclass(unsendable)]
@@ -636,7 +637,7 @@ impl Repository {
         let commit_ids = commit_ids?;
 
         // Get the commit graph
-        let cache = self
+        let _cache = self
             .inner
             .commit_graph_if_enabled()
             .map_err(|err| repository_error(format!("Failed to retrieve commit graph: {}", err)))?;
@@ -646,5 +647,15 @@ impl Repository {
             .merge_base_octopus(commit_ids)
             .map_err(|err| repository_error(format!("Failed to find merge base octopus: {}", err)))
             .map(|id| id.to_string())
+    }
+
+    /// Access the repository's configuration
+    ///
+    /// Returns a Config object that provides access to the repository's configuration.
+    ///
+    /// Returns:
+    ///     A Config object for accessing configuration values
+    fn config(&self) -> Config {
+        Config::new(&self.inner)
     }
 }
