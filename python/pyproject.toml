@@ -17,6 +17,10 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
     "Topic :: Software Development :: Version Control :: Git",
 ]
+dependencies = [
+    "pytest>=8.3.5",
+    "pytest-asyncio>=0.24.0",
+]
 
 [project.urls]
 "Homepage" = "https://github.com/Byron/gitoxide"
@@ -34,3 +38,5 @@ python_files = "test_*.py"
 python_classes = "Test*"
 python_functions = "test_*"
 markers = ["asyncio: mark a test as an asyncio coroutine test"]
+# Exclude any Rust project tests
+norecursedirs = ["../target", "../*/tests", "*/tests"]

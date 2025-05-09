@@ -1,65 +1,62 @@
 #!/usr/bin/env python3
 """
-Basic usage examples for gitoxide.
+Basic usage examples for the gitoxide Python bindings.
 """
 
 import os
+import sys
 import tempfile
-import shutil
+import gitoxide
 
-def sync_example():
-    """Example using the synchronous API."""
-    from gitoxide.sync import Repository
-    
-    # Create a temporary directory
-    temp_dir = tempfile.mkdtemp()
-    try:
-        # Initialize a new repository
-        repo_path = os.path.join(temp_dir, "test_repo")
-        repo = Repository.init(repo_path)
-        
-        # Print repository information
-        print(f"Repository path: {repo.path}")
-        print(f"Working directory: {repo.workdir}")
-        print(f"Is bare: {repo.is_bare}")
-        print(f"Is empty: {repo.is_empty}")
-        
-        # Open an existing repository
-        reopened_repo = Repository.open(repo_path)
-        print(f"Reopened repository: {reopened_repo}")
-    finally:
-        # Clean up
-        shutil.rmtree(temp_dir)
 
-async def async_example():
-    """Example using the asynchronous API."""
-    import asyncio
-    from gitoxide.asyncio import Repository
-    
-    # Create a temporary directory
-    temp_dir = tempfile.mkdtemp()
+def main():
+    print(f"Gitoxide version: {gitoxide.__version__}")
+
+    # Example 1: Open an existing repository
     try:
-        # Initialize a new repository
-        repo_path = os.path.join(temp_dir, "test_repo")
-        repo = await Repository.init(repo_path)
-        
-        # Print repository information
-        print(f"Repository path: {await repo.path}")
-        print(f"Working directory: {await repo.workdir}")
-        print(f"Is bare: {await repo.is_bare}")
-        print(f"Is empty: {await repo.is_empty}")
-        
-        # Open an existing repository
-        reopened_repo = await Repository.open(repo_path)
-        print(f"Reopened repository: {reopened_repo}")
-    finally:
-        # Clean up
-        shutil.rmtree(temp_dir)
+        # Try to open the current directory as a repository
+        repo = gitoxide.Repository.open(".")
+        print(f"\nSuccessfully opened existing repository:")
+        print(f"  Git directory: {repo.git_dir()}")
+        print(f"  Working directory: {repo.work_dir()}")
+        print(f"  Is bare: {repo.is_bare()}")
+        print(f"  HEAD: {repo.head()}")
+    except Exception as e:
+        print(f"\nCould not open current directory as a repository: {e}")
+
+    # Example 2: Create a new repository
+    with tempfile.TemporaryDirectory() as temp_dir:
+        print(f"\nCreating a new repository in {temp_dir}")
+        new_repo = gitoxide.Repository.init(temp_dir, bare=False)
+        print(f"  Git directory: {new_repo.git_dir()}")
+        print(f"  Working directory: {new_repo.work_dir()}")
+        print(f"  Is bare: {new_repo.is_bare()}")
+
+        try:
+            head = new_repo.head()
+            print(f"  HEAD: {head}")
+        except Exception as e:
+            print(f"  HEAD not set in new repository: {e}")
+
+    # Example 3: Create a bare repository
+    with tempfile.TemporaryDirectory() as temp_dir:
+        bare_path = os.path.join(temp_dir, "bare-repo.git")
+        print(f"\nCreating a bare repository in {bare_path}")
+        bare_repo = gitoxide.Repository.init(bare_path, bare=True)
+        print(f"  Git directory: {bare_repo.git_dir()}")
+        print(f"  Working directory: {bare_repo.work_dir()}")
+        print(f"  Is bare: {bare_repo.is_bare()}")
+
+        try:
+            head = bare_repo.head()
+            print(f"  HEAD: {head}")
+        except Exception as e:
+            print(f"  HEAD not set in bare repository: {e}")
+
 
 if __name__ == "__main__":
-    print("Running synchronous example:")
-    sync_example()
-    
-    print("\nRunning asynchronous example:")
-    import asyncio
-    asyncio.run(async_example())
+    try:
+        main()
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)

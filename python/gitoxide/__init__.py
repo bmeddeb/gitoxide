@@ -5,6 +5,22 @@ This package provides a Pythonic API for working with Git repositories,
 built on top of the Gitoxide library.
 """
 
-from . import sync, asyncio, common
+# Import directly from the native module
+from gitoxide.gitoxide import (
+    Repository,
+    __version__,
+    GitoxideError,
+    RepositoryError,
+    ObjectError,
+    ReferenceError
+)
 
-__version__ = sync.__version__
+# Re-export main symbols
+__all__ = [
+    "Repository",
+    "__version__",
+    "GitoxideError",
+    "RepositoryError",
+    "ObjectError",
+    "ReferenceError"
+]
