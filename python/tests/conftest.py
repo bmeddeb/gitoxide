@@ -3,5 +3,5 @@ Configuration for pytest.
 """
 import pytest
 
-# Enable asyncio tests
-pytest_plugins = ["pytest_asyncio"]
+# The pytest_plugins configuration has been moved to the top-level conftest.py
+# as required by newer versions of pytest
