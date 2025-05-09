@@ -5,6 +5,7 @@ The Gitoxide Python bindings provide methods for traversing and analyzing the co
 ## Pages in this Section
 
 - [Merge Base Operations](merge_base.md) - Finding common ancestor commits
+- [Revision Parsing](revision.md) - Working with revision specifications
 
 ## Overview
 
@@ -20,6 +21,7 @@ Currently, the following history-related methods are available:
 | ------ | ----------- |
 | `Repository.merge_bases(one, others)` | Find all merge bases (common ancestors) between two or more commits |
 | `Repository.merge_base(one, two)` | Find the best merge base (common ancestor) between two commits |
+| `Repository.rev_parse(spec)` | Parse a revision specification (like "HEAD^", "main~3") to a commit ID |
 
 ## Example Usage
 

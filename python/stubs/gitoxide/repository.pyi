@@ -227,6 +227,21 @@ class Repository:
         """
         ...
 
+    def rev_parse(self, spec: str) -> str:
+        """
+        Parse a revision specification and return a single commit/object ID.
+
+        Args:
+            spec: The revision specification (e.g., "HEAD", "main~3", "v1.0^{}")
+
+        Returns:
+            The object ID that the revision specification resolves to
+
+        Raises:
+            RepositoryError: If the specification is invalid or cannot be resolved
+        """
+        ...
+
     def find_object(self, id: str) -> Object:
         """
         Find a Git object by its ID.

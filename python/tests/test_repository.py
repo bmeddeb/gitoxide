@@ -158,3 +158,50 @@ class TestRepository:
             with pytest.raises(Exception) as excinfo:
                 repo.merge_base("invalidcommitid", branch1_commit)
             assert "Invalid object ID" in str(excinfo.value)
+
+    def test_rev_parse(self):
+        """Test parsing revision specifications."""
+        with tempfile.TemporaryDirectory() as temp_dir:
+            # Initialize a new repository
+            repo = gitoxide.Repository.init(temp_dir, bare=False)
+
+            # Set up git user info
+            os.system(f"cd {temp_dir} && git config user.name 'Test User'")
+            os.system(
+                f"cd {temp_dir} && git config user.email 'test@example.com'")
+
+            # Create initial commit
+            os.system(
+                f"cd {temp_dir} && echo 'Initial content' > file.txt && git add file.txt && git commit -m 'Initial commit'")
+
+            # Get the initial commit ID using git rev-parse
+            initial_commit = os.popen(
+                f"cd {temp_dir} && git rev-parse HEAD").read().strip()
+
+            # Create a second commit
+            os.system(
+                f"cd {temp_dir} && echo 'Second content' >> file.txt && git add file.txt && git commit -m 'Second commit'")
+            second_commit = os.popen(
+                f"cd {temp_dir} && git rev-parse HEAD").read().strip()
+
+            # Test various revision specifications
+            # HEAD should resolve to the second commit
+            head_commit = repo.rev_parse("HEAD")
+            assert head_commit == second_commit
+
+            # HEAD^ should resolve to the first commit
+            parent_commit = repo.rev_parse("HEAD^")
+            assert parent_commit == initial_commit
+
+            # HEAD~1 should also resolve to the first commit
+            parent_commit2 = repo.rev_parse("HEAD~1")
+            assert parent_commit2 == initial_commit
+
+            # Full SHA should resolve to itself
+            full_sha = repo.rev_parse(second_commit)
+            assert full_sha == second_commit
+
+            # Test with an invalid revision specification
+            with pytest.raises(Exception) as excinfo:
+                repo.rev_parse("non-existent-branch")
+            assert "Failed to parse revision" in str(excinfo.value)
