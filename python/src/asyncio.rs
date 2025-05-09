@@ -2,8 +2,7 @@ use pyo3::prelude::*;
 use pyo3::types::{PyBytes, PyType};
 use std::path::Path;
 use gix_hash::ObjectId;
-use gix_odb;
-use pyo3_async_runtimes::tokio;
+use pyo3_async_runtimes::tokio::{self, future_into_py};
 
 use crate::errors::repository_error;
 

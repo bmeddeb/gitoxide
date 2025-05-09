@@ -138,7 +138,7 @@ impl Repository {
     ///
     /// Returns:
     ///     A GitObject containing the object's ID, kind, and data
-    fn find_object(&self, id: &str, py: Python<'_>) -> PyResult<GitObject> {
+    fn find_object(&self, id: &str) -> PyResult<GitObject> {
         let object_id =
             ObjectId::from_hex(id.as_bytes()).map_err(|_| repository_error(format!("Invalid object ID: {}", id)))?;
 
@@ -149,12 +149,14 @@ impl Repository {
                 repository_error(msg)
             })
             .map(|obj| {
-                let bytes = PyBytes::new(py, &obj.data);
-                GitObject {
-                    id: obj.id.to_string(),
-                    kind: format!("{:?}", obj.kind),
-                    data: bytes.into(),
-                }
+                Python::with_gil(|py| {
+                    let bytes = PyBytes::new(py, &obj.data);
+                    GitObject {
+                        id: obj.id.to_string(),
+                        kind: format!("{:?}", obj.kind),
+                        data: bytes.into(),
+                    }
+                })
             })
     }
 
@@ -165,7 +167,7 @@ impl Repository {
     ///
     /// Returns:
     ///     A GitObject with kind="Blob"
-    fn find_blob(&self, id: &str, py: Python<'_>) -> PyResult<GitObject> {
+    fn find_blob(&self, id: &str) -> PyResult<GitObject> {
         let object_id =
             ObjectId::from_hex(id.as_bytes()).map_err(|_| repository_error(format!("Invalid object ID: {}", id)))?;
 
@@ -176,12 +178,14 @@ impl Repository {
                 repository_error(msg)
             })
             .map(|blob| {
-                let bytes = PyBytes::new(py, &blob.data);
-                GitObject {
-                    id: blob.id.to_string(),
-                    kind: "Blob".to_string(),
-                    data: bytes.into(),
-                }
+                Python::with_gil(|py| {
+                    let bytes = PyBytes::new(py, &blob.data);
+                    GitObject {
+                        id: blob.id.to_string(),
+                        kind: "Blob".to_string(),
+                        data: bytes.into(),
+                    }
+                })
             })
     }
 
@@ -192,7 +196,7 @@ impl Repository {
     ///
     /// Returns:
     ///     A GitObject with kind="Commit"
-    fn find_commit(&self, id: &str, py: Python<'_>) -> PyResult<GitObject> {
+    fn find_commit(&self, id: &str) -> PyResult<GitObject> {
         let object_id =
             ObjectId::from_hex(id.as_bytes()).map_err(|_| repository_error(format!("Invalid object ID: {}", id)))?;
 
@@ -203,12 +207,14 @@ impl Repository {
                 repository_error(msg)
             })
             .map(|commit| {
-                let bytes = PyBytes::new(py, &commit.data);
-                GitObject {
-                    id: commit.id.to_string(),
-                    kind: "Commit".to_string(),
-                    data: bytes.into(),
-                }
+                Python::with_gil(|py| {
+                    let bytes = PyBytes::new(py, &commit.data);
+                    GitObject {
+                        id: commit.id.to_string(),
+                        kind: "Commit".to_string(),
+                        data: bytes.into(),
+                    }
+                })
             })
     }
 
@@ -219,7 +225,7 @@ impl Repository {
     ///
     /// Returns:
     ///     A GitObject with kind="Tree"
-    fn find_tree(&self, id: &str, py: Python<'_>) -> PyResult<GitObject> {
+    fn find_tree(&self, id: &str) -> PyResult<GitObject> {
         let object_id =
             ObjectId::from_hex(id.as_bytes()).map_err(|_| repository_error(format!("Invalid object ID: {}", id)))?;
 
@@ -230,12 +236,14 @@ impl Repository {
                 repository_error(msg)
             })
             .map(|tree| {
-                let bytes = PyBytes::new(py, &tree.data);
-                GitObject {
-                    id: tree.id.to_string(),
-                    kind: "Tree".to_string(),
-                    data: bytes.into(),
-                }
+                Python::with_gil(|py| {
+                    let bytes = PyBytes::new(py, &tree.data);
+                    GitObject {
+                        id: tree.id.to_string(),
+                        kind: "Tree".to_string(),
+                        data: bytes.into(),
+                    }
+                })
             })
     }
 
@@ -246,7 +254,7 @@ impl Repository {
     ///
     /// Returns:
     ///     A GitObject with kind="Tag"
-    fn find_tag(&self, id: &str, py: Python<'_>) -> PyResult<GitObject> {
+    fn find_tag(&self, id: &str) -> PyResult<GitObject> {
         let object_id =
             ObjectId::from_hex(id.as_bytes()).map_err(|_| repository_error(format!("Invalid object ID: {}", id)))?;
 
@@ -257,12 +265,14 @@ impl Repository {
                 repository_error(msg)
             })
             .map(|tag| {
-                let bytes = PyBytes::new(py, &tag.data);
-                GitObject {
-                    id: tag.id.to_string(),
-                    kind: "Tag".to_string(),
-                    data: bytes.into(),
-                }
+                Python::with_gil(|py| {
+                    let bytes = PyBytes::new(py, &tag.data);
+                    GitObject {
+                        id: tag.id.to_string(),
+                        kind: "Tag".to_string(),
+                        data: bytes.into(),
+                    }
+                })
             })
     }
 

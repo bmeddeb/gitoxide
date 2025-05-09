@@ -1,51 +1,99 @@
 #!/usr/bin/env python3
 """
-Example demonstrating the async API in gitoxide.
+Example of using the asynchronous API of gitoxide Python bindings.
+
+Note: This requires the async feature to be enabled.
+Build with: `maturin develop --features=async`
 """
 
-import os
-import tempfile
 import asyncio
-import gitoxide
+import tempfile
+import shutil
+import os
+
+# Import the async Repository class
+try:
+    from gitoxide.asyncio import Repository
+except ImportError:
+    print("Error: Async feature is not available.")
+    print("Build with: maturin develop --features=async")
+    exit(1)
 
 
 async def main():
     """Demonstrate basic async repository operations."""
-    print(f"Gitoxide version: {gitoxide.__version__}")
+    # Create a temporary directory for our repository
+    temp_dir = tempfile.mkdtemp()
 
-    # Create a temporary directory for our repo
-    with tempfile.TemporaryDirectory() as temp_dir:
-        print(f"\nInitializing repository in {temp_dir}")
+    try:
+        print(f"Creating repository in {temp_dir}")
 
         # Initialize a new repository
-        repo = gitoxide.AsyncRepository.init(temp_dir, False)
+        repo = await Repository.init(temp_dir, False)
+        print(f"Repository initialized at {temp_dir}")
 
-        print(f"Is bare repository: {repo.is_bare()}")
+        # Get basic repository information
         print(f"Git directory: {repo.git_dir()}")
         print(f"Work directory: {repo.work_dir()}")
+        print(f"Is bare: {repo.is_bare()}")
+        print(f"Is shallow: {repo.is_shallow()}")
+        print(f"Object hash: {repo.object_hash()}")
 
+        # Get shallow repository information
+        shallow_commits = await repo.shallow_commits()
+        print(f"Shallow commits: {shallow_commits}")
+
+        # Get reference information
         try:
-            head = repo.head()
+            head = await repo.head()
             print(f"HEAD: {head}")
-        except gitoxide.RepositoryError as e:
+        except Exception as e:
             print(f"HEAD not set: {e}")
 
-        # Demonstrate an async operation
-        print("\nStarting async network operation simulation...")
-        result = await repo.simulate_network_operation(1000)  # 1 second delay
-        print(result)
+        # Get all references
+        refs = await repo.references()
+        print(f"References: {len(refs)}")
+        for ref in refs:
+            print(f"  - {ref.name} -> {ref.target} (symbolic: {ref.is_symbolic})")
 
-        # Run multiple operations concurrently
-        print("\nStarting multiple async operations concurrently...")
+        # Create a symbolic reference
+        try:
+            ref = await repo.create_reference("refs/heads/test-branch", "HEAD", True, False)
+            print(f"Created reference: {ref.name} -> {ref.target}")
+        except Exception as e:
+            print(f"Failed to create reference: {e}")
+
+        # List reference names
+        names = await repo.reference_names()
+        print(f"Reference names: {names}")
+
+        # Try to find a reference
+        try:
+            head_ref = await repo.find_reference("HEAD")
+            print(f"Found HEAD reference: {head_ref.name} -> {head_ref.target}")
+        except Exception as e:
+            print(f"Failed to find HEAD: {e}")
+
+        # Object operations would require having objects in the repository
+        # This would typically involve creating commits, which is beyond
+        # the scope of this simple example
+
+        # Run multiple async operations concurrently
+        print("\nRunning multiple async operations concurrently...")
         results = await asyncio.gather(
-            repo.simulate_network_operation(500),
-            repo.simulate_network_operation(1000),
-            repo.simulate_network_operation(1500)
+            repo.shallow_commits(),
+            repo.references(),
+            repo.reference_names()
         )
 
-        for i, result in enumerate(results):
-            print(f"Task {i+1} result: {result}")
+        print(f"Gathered results: {len(results)} operations completed")
+
+    finally:
+        # Clean up
+        shutil.rmtree(temp_dir)
+        print(f"Cleaned up {temp_dir}")
 
 
 if __name__ == "__main__":
+    # Run the async main function
     asyncio.run(main())
