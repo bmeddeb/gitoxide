@@ -7,8 +7,12 @@ from pathlib import Path
 
 # Check if the async feature is available
 try:
-    from gitoxide.asyncio import Repository
-    ASYNC_AVAILABLE = True
+    import gitoxide
+    if hasattr(gitoxide, 'asyncio'):
+        from gitoxide.asyncio import Repository
+        ASYNC_AVAILABLE = True
+    else:
+        ASYNC_AVAILABLE = False
 except ImportError:
     ASYNC_AVAILABLE = False
 

@@ -8,7 +8,7 @@ mod repository;
 
 /// Python bindings for gitoxide - a fast, safe Git implementation in Rust
 #[pymodule]
-fn gitoxide(m: &Bound<'_, PyModule>) -> PyResult<()> {
+fn gitoxide(_py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add("__version__", env!("CARGO_PKG_VERSION"))?;
 
     // Register custom exception types
@@ -20,10 +20,13 @@ fn gitoxide(m: &Bound<'_, PyModule>) -> PyResult<()> {
     // Register the async API if enabled
     #[cfg(feature = "async")]
     {
-        // Create the asyncio submodule
-        let asyncio_module = PyModule::new(m.py(), "asyncio")?;
-        asyncio::init_module(m.py(), &asyncio_module)?;
-        m.add_submodule(&asyncio_module)?;
+        // Add AsyncRepository directly at the top level
+        m.add_class::<asyncio::Repository>()?;
+        m.add("ASYNC_AVAILABLE", true)?;
+    }
+    #[cfg(not(feature = "async"))]
+    {
+        m.add("ASYNC_AVAILABLE", false)?;
     }
 
     Ok(())

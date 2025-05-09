@@ -35,7 +35,7 @@ struct GitReference {
 }
 
 /// A Git repository with async operations
-#[pyclass(unsendable)]
+#[pyclass(unsendable, name = "AsyncRepository")]
 pub struct Repository {
     inner: gix::Repository,
 }
@@ -51,9 +51,9 @@ impl Repository {
         cls: &Bound<'_, PyType>,
         path: &str,
         py: Python<'py>,
-    ) -> PyResult<&'py PyAny> {
+    ) -> PyResult<Bound<'py, PyAny>> {
         let path = Path::new(path).to_owned();
-        tokio::future_into_py(py, async move {
+        future_into_py(py, async move {
             let result = gix::open(&path);
             match result {
                 Ok(repo) => Ok(Repository { inner: repo }),
@@ -77,10 +77,10 @@ impl Repository {
         path: &str,
         bare: Option<bool>,
         py: Python<'py>,
-    ) -> PyResult<&'py PyAny> {
+    ) -> PyResult<Bound<'py, PyAny>> {
         let path = Path::new(path).to_owned();
         let bare = bare.unwrap_or(false);
-        tokio::future_into_py(py, async move {
+        future_into_py(py, async move {
             // Use the appropriate init method
             let result = if bare {
                 gix::init_bare(&path)
@@ -134,9 +134,9 @@ impl Repository {
     /// The list of shallow commits represents the shallow boundary, beyond which
     /// we are lacking all (parent) commits. Returns None if the repository isn't
     /// a shallow clone.
-    fn shallow_commits<'py>(&self, py: Python<'py>) -> PyResult<&'py PyAny> {
+    fn shallow_commits<'py>(&self, py: Python<'py>) -> PyResult<Bound<'py, PyAny>> {
         let repo = self.inner.clone();
-        tokio::future_into_py(py, async move {
+        future_into_py(py, async move {
             match repo.shallow_commits() {
                 Ok(Some(commits)) => {
                     let commit_strs = commits.iter().map(|id| id.to_string()).collect::<Vec<_>>();
@@ -163,10 +163,10 @@ impl Repository {
     ///
     /// Returns:
     ///     A GitObject containing the object's ID, kind, and data
-    fn find_object<'py>(&self, id: &str, py: Python<'py>) -> PyResult<&'py PyAny> {
+    fn find_object<'py>(&self, id: &str, py: Python<'py>) -> PyResult<Bound<'py, PyAny>> {
         let id = id.to_string();
         let repo = self.inner.clone();
-        tokio::future_into_py(py, async move {
+        future_into_py(py, async move {
             let object_id = ObjectId::from_hex(id.as_bytes())
                 .map_err(|_| repository_error(format!("Invalid object ID: {}", id)))?;
 
@@ -194,10 +194,10 @@ impl Repository {
     ///
     /// Returns:
     ///     A GitObject with kind="Blob"
-    fn find_blob<'py>(&self, id: &str, py: Python<'py>) -> PyResult<&'py PyAny> {
+    fn find_blob<'py>(&self, id: &str, py: Python<'py>) -> PyResult<Bound<'py, PyAny>> {
         let id = id.to_string();
         let repo = self.inner.clone();
-        tokio::future_into_py(py, async move {
+        future_into_py(py, async move {
             let object_id = ObjectId::from_hex(id.as_bytes())
                 .map_err(|_| repository_error(format!("Invalid object ID: {}", id)))?;
 
@@ -225,10 +225,10 @@ impl Repository {
     ///
     /// Returns:
     ///     A GitObject with kind="Commit"
-    fn find_commit<'py>(&self, id: &str, py: Python<'py>) -> PyResult<&'py PyAny> {
+    fn find_commit<'py>(&self, id: &str, py: Python<'py>) -> PyResult<Bound<'py, PyAny>> {
         let id = id.to_string();
         let repo = self.inner.clone();
-        tokio::future_into_py(py, async move {
+        future_into_py(py, async move {
             let object_id = ObjectId::from_hex(id.as_bytes())
                 .map_err(|_| repository_error(format!("Invalid object ID: {}", id)))?;
 
@@ -256,10 +256,10 @@ impl Repository {
     ///
     /// Returns:
     ///     A GitObject with kind="Tree"
-    fn find_tree<'py>(&self, id: &str, py: Python<'py>) -> PyResult<&'py PyAny> {
+    fn find_tree<'py>(&self, id: &str, py: Python<'py>) -> PyResult<Bound<'py, PyAny>> {
         let id = id.to_string();
         let repo = self.inner.clone();
-        tokio::future_into_py(py, async move {
+        future_into_py(py, async move {
             let object_id = ObjectId::from_hex(id.as_bytes())
                 .map_err(|_| repository_error(format!("Invalid object ID: {}", id)))?;
 
@@ -287,10 +287,10 @@ impl Repository {
     ///
     /// Returns:
     ///     A GitObject with kind="Tag"
-    fn find_tag<'py>(&self, id: &str, py: Python<'py>) -> PyResult<&'py PyAny> {
+    fn find_tag<'py>(&self, id: &str, py: Python<'py>) -> PyResult<Bound<'py, PyAny>> {
         let id = id.to_string();
         let repo = self.inner.clone();
-        tokio::future_into_py(py, async move {
+        future_into_py(py, async move {
             let object_id = ObjectId::from_hex(id.as_bytes())
                 .map_err(|_| repository_error(format!("Invalid object ID: {}", id)))?;
 
@@ -318,10 +318,10 @@ impl Repository {
     ///
     /// Returns:
     ///     An ObjectHeader containing the object's kind and size
-    fn find_header<'py>(&self, id: &str, py: Python<'py>) -> PyResult<&'py PyAny> {
+    fn find_header<'py>(&self, id: &str, py: Python<'py>) -> PyResult<Bound<'py, PyAny>> {
         let id = id.to_string();
         let repo = self.inner.clone();
-        tokio::future_into_py(py, async move {
+        future_into_py(py, async move {
             let object_id = ObjectId::from_hex(id.as_bytes())
                 .map_err(|_| repository_error(format!("Invalid object ID: {}", id)))?;
 
@@ -348,10 +348,10 @@ impl Repository {
     ///
     /// Returns:
     ///     True if the object exists, False otherwise
-    fn has_object<'py>(&self, id: &str, py: Python<'py>) -> PyResult<&'py PyAny> {
+    fn has_object<'py>(&self, id: &str, py: Python<'py>) -> PyResult<Bound<'py, PyAny>> {
         let id = id.to_string();
         let repo = self.inner.clone();
-        tokio::future_into_py(py, async move {
+        future_into_py(py, async move {
             let object_id = ObjectId::from_hex(id.as_bytes())
                 .map_err(|_| repository_error(format!("Invalid object ID: {}", id)))?;
 
@@ -362,45 +362,43 @@ impl Repository {
     /// Get all references in the repository asynchronously
     ///
     /// Returns a list of all references (branches, tags, etc.)
-    fn references<'py>(&self, py: Python<'py>) -> PyResult<&'py PyAny> {
+    fn references<'py>(&self, py: Python<'py>) -> PyResult<Bound<'py, PyAny>> {
         let repo = self.inner.clone();
-        tokio::future_into_py(py, async move {
-            let refs_iter = match repo.references() {
-                Ok(iter) => iter.all(),
+        future_into_py(py, async move {
+            let references = match repo.references() {
+                Ok(refs) => refs,
                 Err(err) => {
                     let msg = format!("Failed to get references: {}", err);
                     return Err(repository_error(msg));
                 }
             };
 
-            let mut refs = Vec::new();
-            for iter_result in refs_iter {
-                match iter_result {
-                    Ok(reference_iter) => {
-                        for ref_result in reference_iter {
-                            match ref_result {
-                                Ok(r) => {
-                                    // Convert the target based on its type
-                                    let (target, is_symbolic) = match r.inner.target {
-                                        gix_ref::Target::Symbolic(name) => (name.as_bstr().to_string(), true),
-                                        gix_ref::Target::Object(id) => (id.to_string(), false),
-                                    };
+            let refs_iter = match references.all() {
+                Ok(iter) => iter,
+                Err(err) => {
+                    let msg = format!("Failed to get all references: {}", err);
+                    return Err(repository_error(msg));
+                }
+            };
 
-                                    refs.push(GitReference {
-                                        name: r.inner.name.as_bstr().to_string(),
-                                        target,
-                                        is_symbolic,
-                                    });
-                                }
-                                Err(err) => {
-                                    let msg = format!("Error with reference: {}", err);
-                                    return Err(repository_error(msg));
-                                }
-                            }
-                        }
+            let mut refs = Vec::new();
+            for ref_result in refs_iter {
+                match ref_result {
+                    Ok(r) => {
+                        // Convert the target based on its type
+                        let (target, is_symbolic) = match r.inner.target {
+                            gix_ref::Target::Symbolic(name) => (name.as_bstr().to_string(), true),
+                            gix_ref::Target::Object(id) => (id.to_string(), false),
+                        };
+
+                        refs.push(GitReference {
+                            name: r.inner.name.as_bstr().to_string(),
+                            target,
+                            is_symbolic,
+                        });
                     }
                     Err(err) => {
-                        let msg = format!("Error iterating references: {}", err);
+                        let msg = format!("Error with reference: {}", err);
                         return Err(repository_error(msg));
                     }
                 }
@@ -411,35 +409,33 @@ impl Repository {
     }
 
     /// Get a list of all reference names in the repository asynchronously
-    fn reference_names<'py>(&self, py: Python<'py>) -> PyResult<&'py PyAny> {
+    fn reference_names<'py>(&self, py: Python<'py>) -> PyResult<Bound<'py, PyAny>> {
         let repo = self.inner.clone();
-        tokio::future_into_py(py, async move {
-            let refs_iter = match repo.references() {
-                Ok(iter) => iter.all(),
+        future_into_py(py, async move {
+            let references = match repo.references() {
+                Ok(refs) => refs,
                 Err(err) => {
                     let msg = format!("Failed to get references: {}", err);
                     return Err(repository_error(msg));
                 }
             };
 
+            let refs_iter = match references.all() {
+                Ok(iter) => iter,
+                Err(err) => {
+                    let msg = format!("Failed to get all references: {}", err);
+                    return Err(repository_error(msg));
+                }
+            };
+
             let mut names = Vec::new();
-            for iter_result in refs_iter {
-                match iter_result {
-                    Ok(reference_iter) => {
-                        for ref_result in reference_iter {
-                            match ref_result {
-                                Ok(r) => {
-                                    names.push(r.inner.name.as_bstr().to_string());
-                                }
-                                Err(err) => {
-                                    let msg = format!("Error with reference: {}", err);
-                                    return Err(repository_error(msg));
-                                }
-                            }
-                        }
+            for ref_result in refs_iter {
+                match ref_result {
+                    Ok(r) => {
+                        names.push(r.inner.name.as_bstr().to_string());
                     }
                     Err(err) => {
-                        let msg = format!("Error iterating references: {}", err);
+                        let msg = format!("Error with reference: {}", err);
                         return Err(repository_error(msg));
                     }
                 }
@@ -456,10 +452,10 @@ impl Repository {
     ///
     /// Returns:
     ///     A GitReference if found
-    fn find_reference<'py>(&self, name: &str, py: Python<'py>) -> PyResult<&'py PyAny> {
+    fn find_reference<'py>(&self, name: &str, py: Python<'py>) -> PyResult<Bound<'py, PyAny>> {
         let name = name.to_string();
         let repo = self.inner.clone();
-        tokio::future_into_py(py, async move {
+        future_into_py(py, async move {
             let r = repo.find_reference(&name)
                 .map_err(|err| {
                     let msg = format!("Failed to find reference '{}': {}", name, err);
@@ -489,11 +485,11 @@ impl Repository {
     ///
     /// Returns:
     ///     A GitReference representing the newly created reference
-    fn create_reference<'py>(&self, name: &str, target: &str, is_symbolic: bool, force: bool, py: Python<'py>) -> PyResult<&'py PyAny> {
+    fn create_reference<'py>(&self, name: &str, target: &str, is_symbolic: bool, force: bool, py: Python<'py>) -> PyResult<Bound<'py, PyAny>> {
         let name = name.to_string();
         let target = target.to_string();
         let repo = self.inner.clone();
-        tokio::future_into_py(py, async move {
+        future_into_py(py, async move {
             let constraint = if force {
                 gix_ref::transaction::PreviousValue::Any
             } else {
@@ -570,7 +566,7 @@ impl Repository {
 
                 let log_message = format!("create: {}", name);
 
-                match repo.reference(&name, object_id, constraint, log_message) {
+                match repo.reference(name.as_str(), object_id, constraint, log_message) {
                     Ok(r) => {
                         Ok(GitReference {
                             name: r.inner.name.as_bstr().to_string(),
@@ -589,9 +585,9 @@ impl Repository {
 
     /// Get the name of the HEAD reference (e.g., "refs/heads/main")
     /// or the commit ID if HEAD is detached
-    fn head<'py>(&self, py: Python<'py>) -> PyResult<&'py PyAny> {
+    fn head<'py>(&self, py: Python<'py>) -> PyResult<Bound<'py, PyAny>> {
         let repo = self.inner.clone();
-        tokio::future_into_py(py, async move {
+        future_into_py(py, async move {
             repo.head_ref()
                 .map_err(|err| {
                     let msg = format!("Failed to get HEAD: {}", err);
@@ -605,7 +601,8 @@ impl Repository {
     }
 }
 
-pub fn init_module(_py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
-    m.add_class::<Repository>()?;
+#[allow(dead_code)]
+pub fn init_module(_py: Python<'_>, _m: &Bound<'_, PyModule>) -> PyResult<()> {
+    // This function is no longer used since we defined the module with #[pymodule]
     Ok(())
 }

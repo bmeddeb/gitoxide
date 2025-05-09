@@ -85,6 +85,12 @@ This document tracks the current progress and future work for the gitoxide Pytho
 1. Async Implementation
    - Current pyo3-async-runtimes (0.24.0) has API differences that prevent a straightforward implementation
    - Need to update the async implementation to work with the latest version
+   - The async module is not being correctly exposed by PyO3 when building with maturin
+   - Possible solutions include:
+     1. Using a separate package for async functionality
+     2. Implementing a Python-side wrapper that initializes the async features
+     3. Updating to a newer PyO3 version that better supports submodules
+     4. Using a different build approach that allows for more control over the module structure
 
 2. Future Tasks
    - Add type stubs to improve IDE autocompletion
