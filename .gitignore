@@ -16,6 +16,9 @@ $/tests/fixtures/commit-graphs/
 # Cargo lock files of fuzz targets - let's have the latest versions of everything under test
 **/fuzz/Cargo.lock
 
+# Main Cargo.lock - let's ignore it to allow for dependency updates
+Cargo.lock
+
 # newer Git sees these as precious, older Git falls through to the pattern above
 $**/fuzz/Cargo.lock
 
