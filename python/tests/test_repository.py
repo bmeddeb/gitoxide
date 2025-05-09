@@ -205,3 +205,72 @@ class TestRepository:
             with pytest.raises(Exception) as excinfo:
                 repo.rev_parse("non-existent-branch")
             assert "Failed to parse revision" in str(excinfo.value)
+
+    def test_merge_base_octopus(self):
+        """Test finding the best merge base among multiple commits."""
+        with tempfile.TemporaryDirectory() as temp_dir:
+            # Initialize a new repository
+            repo = gitoxide.Repository.init(temp_dir, bare=False)
+
+            # Set up git user info
+            os.system(f"cd {temp_dir} && git config user.name 'Test User'")
+            os.system(
+                f"cd {temp_dir} && git config user.email 'test@example.com'")
+
+            # Create initial commit
+            os.system(
+                f"cd {temp_dir} && echo 'Initial content' > file.txt && git add file.txt && git commit -m 'Initial commit'")
+
+            # Get the initial commit ID
+            initial_commit = os.popen(
+                f"cd {temp_dir} && git rev-parse HEAD").read().strip()
+
+            # Create three branches from the initial commit
+
+            # Branch 1
+            os.system(f"cd {temp_dir} && git checkout -b branch1")
+            os.system(
+                f"cd {temp_dir} && echo 'Branch 1 content' >> file.txt && git add file.txt && git commit -m 'Branch 1 commit'")
+            branch1_commit = os.popen(
+                f"cd {temp_dir} && git rev-parse HEAD").read().strip()
+
+            # Branch 2
+            os.system(
+                f"cd {temp_dir} && git checkout -b branch2 {initial_commit}")
+            os.system(
+                f"cd {temp_dir} && echo 'Branch 2 content' >> file.txt && git add file.txt && git commit -m 'Branch 2 commit'")
+            branch2_commit = os.popen(
+                f"cd {temp_dir} && git rev-parse HEAD").read().strip()
+
+            # Branch 3
+            os.system(
+                f"cd {temp_dir} && git checkout -b branch3 {initial_commit}")
+            os.system(
+                f"cd {temp_dir} && echo 'Branch 3 content' >> file.txt && git add file.txt && git commit -m 'Branch 3 commit'")
+            branch3_commit = os.popen(
+                f"cd {temp_dir} && git rev-parse HEAD").read().strip()
+
+            # Test merge_base_octopus with all three branches
+            # The merge base of all three branches should be the initial commit
+            merge_base = repo.merge_base_octopus(
+                [branch1_commit, branch2_commit, branch3_commit])
+            assert merge_base == initial_commit
+
+            # Test with only two branches
+            merge_base_two = repo.merge_base_octopus(
+                [branch1_commit, branch2_commit])
+            assert merge_base_two == initial_commit
+
+            # Test with a single commit - should return that commit
+            merge_base_one = repo.merge_base_octopus([branch1_commit])
+            assert merge_base_one == branch1_commit
+
+            # Test with empty list
+            with pytest.raises(Exception) as excinfo:
+                repo.merge_base_octopus([])
+            assert "No commits provided" in str(excinfo.value)
+
+            # Test with invalid commit ID
+            with pytest.raises(Exception) as excinfo:
+                repo.merge_base_octopus(["invalidcommitid", branch1_commit])
+            assert "Invalid object ID" in str(excinfo.value)

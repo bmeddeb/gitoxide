@@ -227,6 +227,21 @@ class Repository:
         """
         ...
 
+    def merge_base_octopus(self, commits: List[str]) -> str:
+        """
+        Find the best merge base among multiple commits.
+
+        Args:
+            commits: A list of commit IDs
+
+        Returns:
+            The commit ID of the best common ancestor
+
+        Raises:
+            RepositoryError: If no commits are provided, if any commit ID is invalid, or if no merge base exists
+        """
+        ...
+
     def rev_parse(self, spec: str) -> str:
         """
         Parse a revision specification and return a single commit/object ID.

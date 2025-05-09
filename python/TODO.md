@@ -50,9 +50,9 @@ This document tracks the current progress and future work for the gitoxide Pytho
 ## Upcoming Work
 
 1. Revision/History Features
-   - [ ] `merge_bases()` - Find merge bases between commits
-   - [ ] `merge_base_octopus()` - Find best merge base among multiple commits
-   - [ ] `revparse()` - Parse revision specifiers
+   - [x] `merge_bases()` - Find merge bases between commits
+   - [x] `merge_base_octopus()` - Find best merge base among multiple commits
+   - [x] `revparse()` - Parse revision specifiers
 
 2. Configuration
    - [ ] `config()` - Access repository configuration

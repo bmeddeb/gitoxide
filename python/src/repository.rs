@@ -605,4 +605,46 @@ impl Repository {
             .map_err(|err| repository_error(format!("Failed to parse revision '{}': {}", spec, err)))
             .map(|id| id.to_string())
     }
+
+    /// Find the best merge base among multiple commits
+    ///
+    /// Args:
+    ///     commits: A list of commit IDs
+    ///
+    /// Returns:
+    ///     The best common ancestor commit ID
+    ///
+    /// Raises:
+    ///     RepositoryError: If no commits are provided, if any commit ID is invalid, or if no merge base exists
+    fn merge_base_octopus(&self, commits: Vec<String>) -> PyResult<String> {
+        // Check if we have at least one commit
+        if commits.is_empty() {
+            return Err(repository_error(
+                "No commits provided for merge_base_octopus".to_string(),
+            ));
+        }
+
+        // Convert string IDs to ObjectIds
+        let commit_ids: Result<Vec<_>, _> = commits
+            .iter()
+            .map(|id_str| {
+                ObjectId::from_hex(id_str.as_bytes())
+                    .map_err(|_| repository_error(format!("Invalid object ID: {}", id_str)))
+            })
+            .collect();
+
+        let commit_ids = commit_ids?;
+
+        // Get the commit graph
+        let cache = self
+            .inner
+            .commit_graph_if_enabled()
+            .map_err(|err| repository_error(format!("Failed to retrieve commit graph: {}", err)))?;
+
+        // Find the merge base
+        self.inner
+            .merge_base_octopus(commit_ids)
+            .map_err(|err| repository_error(format!("Failed to find merge base octopus: {}", err)))
+            .map(|id| id.to_string())
+    }
 }

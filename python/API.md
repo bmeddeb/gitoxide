@@ -48,6 +48,13 @@ repo = gitoxide.Repository.init('/path/to/new/repo', bare=False)
 - `shallow_file()` - Get path to the shallow file
 - `object_hash()` - Get hash algorithm used in this repository (e.g., "Sha1")
 
+**Revision and History Methods:**
+
+- `merge_bases(one, others)` - Find all merge bases between one commit and multiple others
+- `merge_base(one, two)` - Find the best merge base between two commits
+- `merge_base_octopus(commits)` - Find the best merge base among multiple commits
+- `rev_parse(spec)` - Parse a revision specification (e.g., "HEAD~3") to an object ID
+
 **Object Manipulation Methods:**
 
 - `find_object(id)` - Find any Git object by its ID
