@@ -40,12 +40,6 @@ This document tracks the current progress and future work for the gitoxide Pytho
    - [x] Basic usage example
    - [x] Repository objects and references example
 
-## In Progress
-
-1. Async API ### Skip for now.
-   - [x] Basic repository operations (open, init, head, shallow_commits)
-   - [ ] Object manipulation (find_object, etc.)
-   - [ ] Reference management (references, etc.)
 
 ## Upcoming Work
 
@@ -100,3 +94,9 @@ This document tracks the current progress and future work for the gitoxide Pytho
    - Improve error messages and exception handling
    - Add more examples for specific use cases
    - Create comprehensive documentation
+
+
+3. Async API ### Skip for now.
+   - [x] Basic repository operations (open, init, head, shallow_commits)
+   - [ ] Object manipulation (find_object, etc.)
+   - [ ] Reference management (references, etc.)

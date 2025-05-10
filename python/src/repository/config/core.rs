@@ -206,7 +206,7 @@ impl Config {
 
 impl Config {
     // Helper to get values from the raw config file
-    fn multi_values_from_raw_config(&self, key: &str) -> Option<Vec<String>> {
+    fn multi_values_from_raw_config(&self, _key: &str) -> Option<Vec<String>> {
         // This is just a placeholder - in a real implementation, you would
         // try to get all values for a multi-valued key from the raw config file
         None

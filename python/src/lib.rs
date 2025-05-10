@@ -3,7 +3,6 @@ use pyo3::prelude::*;
 // Module definitions
 #[cfg(feature = "async")]
 mod asyncio;
-mod config;
 mod errors;
 mod repository;
 
@@ -17,7 +16,7 @@ fn gitoxide(_py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
 
     // Register the sync API
     m.add_class::<repository::Repository>()?;
-    m.add_class::<config::Config>()?;
+    m.add_class::<repository::Config>()?;
 
     // Register the async API if enabled
     #[cfg(feature = "async")]
